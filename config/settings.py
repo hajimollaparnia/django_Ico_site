@@ -52,6 +52,7 @@ INSTALLED_APPS = [
 
     'accounts',
     'pages',
+    'token_app'
 
 ]
 SITE_ID = 1
@@ -161,9 +162,9 @@ PROJECT_ROOT = os.path.normpath(os.path.dirname(__file__))
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
-AUTH_USER_MODEL = 'accounts.CustomUser'
+# LOGIN_REDIRECT_URL = 'home'
+# LOGOUT_REDIRECT_URL = 'home'
+# AUTH_USER_MODEL = 'accounts.CustomUser'
 
 # crispy forms settings
 
