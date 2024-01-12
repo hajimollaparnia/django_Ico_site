@@ -12,28 +12,30 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from django.contrib.messages import constants as messages
 # from environs import Env
 import os
-# from pathlib import Path
-
-# env = Env()
-# env.read_env()
+from django.contrib.messages import constants as messages
+from environs import Env
+import os
+from pathlib import Path
 
 from pathlib import Path
 
+env = Env()
+env.read_env()
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-b764$#(&o4o((cvy!z^nsseq5@erq#e^0%5r5a(%c24*f^*sde'
+SECRET_KEY = env("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -49,6 +51,10 @@ INSTALLED_APPS = [
     'crispy_bootstrap4',
     'allauth',
     'allauth.account',
+    'ckeditor',
+    # 'notifications',
+    # 'django_mail_admin',
+
 
     'accounts',
     'pages',
@@ -56,7 +62,7 @@ INSTALLED_APPS = [
 
 ]
 SITE_ID = 1
-
+# DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -88,7 +94,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
@@ -104,7 +109,6 @@ DATABASES = {
         # 'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -131,7 +135,7 @@ AUTHENTICATION_BACKENDS = [
 
 ]
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -143,14 +147,12 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 # STATIC_URL = 'static/'
 
 STATIC_URL = '/static/'
-
 
 STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
 
@@ -178,3 +180,27 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
+
+# EMAIL_HOST = 'your_email_host'
+# EMAIL_PORT = 465
+# EMAIL_USE_TLS = True  # یا False، به تنظیمات ایمیل سرویس شما بستگی دارد
+# EMAIL_HOST_USER = 'hajimollaparnia7676@gmail.com'
+# EMAIL_HOST_PASSWORD = 'your_email_password'
+# DEFAULT_FROM_EMAIL = 'hajimollaparnia7676@gmail.com'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'hajimollaparnia7676@gmail.com'
+EMAIL_HOST_PASSWORD = '4parnia1474'
+EMAIL_USE_SSL = False
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#
+# EMAIL_HOST = 'localhost'
+# EMAIL_PORT = 25
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'hajimollaparnia7676@gmail.com'
+# EMAIL_HOST_PASSWORD = 'parnia1474'
+# # EMAIL_USE_SSL = False
+

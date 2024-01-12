@@ -17,12 +17,13 @@
 <link href="{% static 'css/style.css' %}" rel="stylesheet">
 <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
 <link href="{% static 'fonts/flaticon.css' %}" rel="stylesheet">
+<link href="{% static 'css/ionicons.min.css' %}" rel="stylesheet">
 
 <!-- JavaScripts -->
-<script src="{% static 'js/modernizr.js' %}"></script>
+<script src="{% static '' %}js/modernizr.js"></script>
 
 <!-- Online Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,700,900|Montserrat:300,400,500,600,700,800" rel="stylesheet">
 <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -34,6 +35,7 @@
 
 </head>
 <body>
+
 <!-- LOADER -->
 <div id="loader">
   <div class="position-center-center">
@@ -50,64 +52,32 @@
 
       <!-- Logo -->
       <div class="logo"> <a href="index.html"><img class="img-responsive" src="images/logo.png" alt="" ></a> </div>
-      <nav class="navbar ownmenu navbar-expand-lg ">
+      <nav class="navbar ownmenu navbar-expand-lg">
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="nav">
-            <li class="scroll active"><a href="{% url 'home' %}">Home</a></li>
-            <li class="scroll"> <a href="{% url 'aboutus' %}">About </a> </li>
-            <li class="scroll"> <a href="{% url 'token_page' %}">Token</a> </li>
-            <li class="scroll"> <a href="{% url 'activity' %}">Activity</a> </li>
-            <li class="scroll"> <a href="{% url 'roadmap' %}">Road Map</a> </li>
-            <li class="scroll"> <a href="{% url 'team' %}">Team</a> </li>
-            <li class="scroll"> <a href="{% url 'contact' %}">Contact</a> </li>
+            <li class="scroll active"><a href="#hme">Home</a></li>
+            <li class="scroll"> <a href="#about">About </a> </li>
+            <li class="scroll"> <a href="#token">Token</a> </li>
+            <li class="scroll"> <a href="#activity">Activity</a> </li>
+            <li class="scroll"> <a href="#roadmap">Road Map</a> </li>
+            <li class="scroll"> <a href="#contact">Contact</a> </li>
           </ul>
         </div>
       </nav>
-
     </div>
     <div class="clearfix"></div>
   </header>
+  {% block content %}
 
-{% block content %}
+
 
 {% endblock %}
 
-  <!-- Footer -->
-  <footer id="contact">
-    <div class="container">
-      <div class="parthner">
-        <h6>Partnered with Innovative Globally</h6>
-        <ul>
-          <li><a href="#."><img src="images/c-mg-1.png" alt=""></a></li>
-          <li><a href="#."><img src="images/c-mg-2.png" alt=""></a></li>
-          <li><a href="#."><img src="images/c-mg-3.png" alt=""></a></li>
-          <li><a href="#."><img src="images/c-mg-1.png" alt=""></a></li>
-          <li><a href="#."><img src="images/c-mg-2.png" alt=""></a></li>
-          <li><a href="#."><img src="images/c-mg-3.png" alt=""></a></li>
-          <li><a href="#."><img src="images/c-mg-1.png" alt=""></a></li>
-          <li><a href="#."><img src="images/c-mg-2.png" alt=""></a></li>
-        </ul>
-      </div>
-    </div>
 
-    <!-- Rights -->
-    <div class="rights">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <p>© 2018 ICO Crypto BlockChain. All Rights Reserved. Webicode.com</p>
-          </div>
-          <div class="col-md-6 text-right"> <a href="#.">Faqs </a> <a href="#.">Terms & Conditions </a> <a href="#.">Contact Us</a> </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-</div>
 
-<!-- GO TO TOP -->
-	<a href="#" class="cd-top"><i class="ion-chevron-up"></i></a>
-<!-- GO TO TOP End -->
+
+
 
 <!-- Script -->
 <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
@@ -118,5 +88,4 @@
 <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
 </body>
-
 </html>

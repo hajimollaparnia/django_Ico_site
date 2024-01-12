@@ -4,7 +4,42 @@
 
 {% block content %}
 
+ <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
 
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .team-member {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 20px 0;
+        }
+    </style>
     <!-- Team Members -->
     <section class="team style-2 padding-top-150 padding-bottom-150" id="team">
       <div class="container">
@@ -13,18 +48,11 @@
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nibh dolor, efficitur eget pharetra ac, cursus sed sapien. Cras posuere ligula ut blandit varius. </p>
         </div>
         <ul class="team-small">
-          <li><img  src="images/team.png" alt=""><a class="hover" href="#.">John Doe </a></li>
-          <li><img  src="images/team.png" alt=""><a class="hover" href="#.">John Doe </a></li>
-          <li><img  src="images/team.png" alt=""><a class="hover" href="#.">John Doe </a></li>
-          <li><img  src="images/team.png" alt=""><a class="hover" href="#.">John Doe </a></li>
-          <li><img  src="images/team.png" alt=""><a class="hover" href="#.">John Doe </a></li>
-          <li><img  src="images/team.png" alt=""><a class="hover" href="#.">John Doe </a></li>
-          <li><img  src="images/team.png" alt=""><a class="hover" href="#.">John Doe </a></li>
-          <li><img  src="images/team.png" alt=""><a class="hover" href="#.">John Doe </a></li>
-          <li><img  src="images/team.png" alt=""><a class="hover" href="#.">John Doe </a></li>
-          <li><img  src="images/team.png" alt=""><a class="hover" href="#.">John Doe </a></li>
-          <li><img  src="images/team.png" alt=""><a class="hover" href="#.">John Doe </a></li>
-          <li><img  src="images/team.png" alt=""><a class="hover" href="#.">John Doe </a></li>
+          {% for team_member in team_members %}
+           <li><img  src="images/team.png" alt=""><a class="hover" href="#.">{{ team_member.name }}</a></li>
+              <li><img  src="images/team.png" alt=""><a class="hover" href="#.">{{ team_member.position }}</a></li>
+        <hr>
+          {% endfor %}
       </ul>
       </div>
     </section>

@@ -15,9 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+# from django_mail_admin.sites import MailAdminSite
+#
+# mail_admin_site = MailAdminSite(name='mail_admin')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # path('admin-mail/', mail_admin_site.urls),
+    # path('admin-mail/', include('mail_admin.urls')),
+
     path('', include('pages.urls')),
-    path('token', include('token_app.urls'))
+    path('token', include('token_app.urls')),
+
 ]
