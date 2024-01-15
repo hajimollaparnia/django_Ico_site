@@ -19,12 +19,16 @@ from django.urls import path, include
 #
 # mail_admin_site = MailAdminSite(name='mail_admin')
 
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib import admin
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('admin-mail/', mail_admin_site.urls),
-    # path('admin-mail/', include('mail_admin.urls')),
-
     path('', include('pages.urls')),
-    path('token', include('token_app.urls')),
 
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

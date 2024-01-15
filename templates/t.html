@@ -1,0 +1,522 @@
+{% extends '_base.html' %}
+{% load humanize %}
+{% load static %}
+
+
+{% block content %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Event Countdown Timer</title>
+        <style>
+
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+                background-color: #f4f4f4;
+            }
+
+            h1 {
+                color: #333;
+            }
+
+            #timer {
+                background-color: #fff;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                margin: 20px auto;
+                max-width: 300px;
+            }
+
+            #countdown {
+                font-size: 24px;
+                font-weight: bold;
+                color: #e44d26;
+            }
+
+            #event {
+                font-size: 34px;
+                font-weight: bold;
+                color: #221d1c;
+            }
+
+        </style>
+    </head>
+    <body>
+    <h1>Event Countdown Timer</h1>
+    <div id="timer">
+        <h3 id="event">{{ data.name }}</h3>
+        <h2>Time Remaining:</h2>
+        <div id="countdown">
+            3 <span>Months</span> :
+            3 <span>Days</span> :
+            3 <span>Hours</span> :
+            3 <span>Minutes</span> :
+            3 <span>Seconds</span>
+        </div>
+    </div>
+
+
+    <script>
+        // Function to update the countdown timer
+        function updateTimer() {
+            var month = parseInt(document.getElementById('countdown').textContent.split(':')[0]);
+            var days = parseInt(document.getElementById('countdown').textContent.split(':')[1]);
+            var hours = parseInt(document.getElementById('countdown').textContent.split(':')[2]);
+            var minutes = parseInt(document.getElementById('countdown').textContent.split(':')[3]);
+            var seconds = parseInt(document.getElementById('countdown').textContent.split(':')[4]);
+
+            if (seconds > 0) {
+                seconds--;
+            } else {
+                if (minutes > 0) {
+                    minutes--;
+                    seconds = 59;
+                } else {
+                    if (hours > 0) {
+                        hours--;
+                        minutes = 59;
+                        seconds = 59;
+                    } else {
+                        if (days > 0) {
+                            days--;
+                            hours = 23;
+                            minutes = 59;
+                            seconds = 59;
+                        } else {
+                            if (month > 0) {
+                                month--;
+                                days = 29; // Assuming 30 days in a month
+                                hours = 23;
+                                minutes = 59;
+                                seconds = 59;
+                            } else {
+                                // Timer has reached zero, you can handle this case as needed
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Update the timer display
+            document.getElementById('countdown').textContent =
+                (month < 10 ? '0' : '') + month + ' : ' +
+                (days < 10 ? '0' : '') + days + ' : ' +
+                (hours < 10 ? '0' : '') + hours + ' : ' +
+                (minutes < 10 ? '0' : '') + minutes + ' : ' +
+                (seconds < 10 ? '0' : '') + seconds;
+        }
+
+        // Update the timer every second
+        setInterval(updateTimer, 1000);
+    </script>
+
+    </body>
+    </html>
+
+
+    <!-- HOME MAIN  -->
+    <section class="simple-head" data-stellar-background-ratio="0.5" id="hme">
+        <!-- Particles -->
+        <div id="particles-js"></div>
+        <div class="position-center-center">
+            <div class="container text-center">
+                <p>{{ home_description.description|safe }}</p>
+                <a href="{{ home_description.link|safe }}" class="btn">Join Us</a> <a
+                    href="{{ home_description.pdf_file.url }}" download class="btn btn-inverse">View White Paper</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <div id="content">
+
+        <!-- Why Choose Us -->
+        <section class="why-choose padding-top-150 padding-bottom-150" id="about">
+            <div class="container">
+
+                <!-- Why Choose Us  ROW-->
+                <div class="row">
+                    <div class="col-md-7 margin-top-60">
+
+                        <p>{{ about_info.description|safe }}</p>
+                        <video width="320" height="240" controls>
+                            <source src="{{ about_info.video_file.url }}" type="video/mp4">
+                        </video>
+                    </div>
+
+
+                    <!-- Image -->
+                    <div class="col-md-5 text-right"><img src="{{ about_info.image_file.url }}"
+                                                          alt="Why Choose Us Image"></div>
+                </div>
+
+                <!-- Services ROW -->
+                <div class="row">
+                    {% for transaction in transactions %}
+                        <!-- Services -->
+                        <div class="col-md-4">
+                            <div class="ib-icon"><i class="{{ transaction.logo }}"></i></div>
+                            <div class="ib-info">
+                                <h4 class="h6">{{ transaction.title }}</h4>
+                                <p>{{ transaction.description }}</p>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Token Distribution -->
+        <section class="distri drk padding-top-150 padding-bottom-150 " id="token">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Token  -->
+                    <div class="col-lg-7">
+                        <p>{{ token_description.description1|safe }}</p>
+
+                        <!-- Progress -->
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50"
+                                 aria-valuemin="0" aria-valuemax="150">
+                                <span>{{ token_description.A|safe|intcomma }}<small>{{ token_description.a|safe }}</small></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <h6> {{ token_description.B }}</h6>
+                                <span>{{ token_description.b|safe }}</span></div>
+                            <div class="col">
+                                <h6> {{ token_description.C|safe }}</h6>
+                                <span>{{ token_description.c|safe }}</span></div>
+                            <div class="col">
+                                <h6> {{ token_description.D|safe }}</h6>
+                                <span>{{ token_description.d|safe }}</span></div>
+                        </div>
+                        <div>
+
+                            <p>{{ token_description.description2|safe }}</p>
+                        </div>
+
+
+                    </div>
+
+                    <!-- Total Distribution -->
+                    <div class="col-lg-5">
+                        <p>{{ token_description.description3|safe }}g</p>
+                        <div class="countdown-all">
+
+                            <!-- Countdown -->
+                            <ul class="row">
+                                <!-- Days -->
+                                <li class="col-md-3">
+                                    <article><span class="days">9</span>
+                                        <p class="days_ref">Days</p>
+                                    </article>
+                                </li>
+                                <!-- Hours -->
+                                <li class="col-md-3">
+                                    <article><span class="hours">4</span>
+                                        <p class="hours_ref">Hours</p>
+                                    </article>
+                                </li>
+                                <!-- Mintes -->
+                                <li class="col-md-3">
+                                    <article><span class="minutes">6</span>
+                                        <p class="minutes_ref">Minutes</p>
+                                    </article>
+                                </li>
+                                <!-- Seconds -->
+                                <li class="col-md-3">
+                                    <article><span class="seconds">6</span>
+                                        <p class="seconds_ref">Seconds</p>
+                                    </article>
+                                </li>
+                            </ul>
+                             </div>
+
+                            <a href="{{ token_description.join_us_link }}" class="btn">Join Us</a> <a href="#."
+                                                                                                      class="btn btn-inverse">Buy
+                            Now</a>
+
+                            <!-- Buy Option -->
+                            <div class="card-info"><i class="fab  fa-bitcoin"></i> <i class="fab  fa-cc-discover"></i>
+                                <i class="fab  fa-cc-visa"></i> <i class="fab  fa-cc-mastercard"></i></div>
+                        </div>
+                </div>
+            </div>
+         </div>
+
+        </section>
+
+        <!-- Development -->
+        <section class="dev-activ text-center padding-top-150 padding-bottom-150" id="activity">
+            <div class="container">
+                <div class="sm-intro">
+                    <h2>Development Activity</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nibh dolor, efficitur eget
+                        pharetra ac, cursus sed sapien. Cras posuere ligula ut blandit varius. </p>
+                </div>
+                <ul class="row margin-top-50 margin-bottom-50">
+                    <li class="col"><i class="flaticon-rotate"></i> <span><span class="counter">4</span> hrs Ago</span>
+                        <p>Last Update</p>
+                    </li>
+                    <li class="col"><i class="flaticon-building"></i> <span><span
+                            class="counter">10</span> Days Ago</span>
+                        <p>Last Block Found</p>
+                    </li>
+                    <li class="col"><i class="flaticon-money-1"></i> <span><span class="counter">45057</span>+</span>
+                        <p>Contributions</p>
+                    </li>
+                    <li class="col"><i class="flaticon-team"></i> <span class="counter">80</span>
+                        <p>Team Members</p>
+                    </li>
+                </ul>
+                <a href="#." class="btn">Start on GitHub</a> <a href="#." class="btn btn-inverse">White Paper</a></div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="about light-bg">
+            <!-- Right Background -->
+            <div class="main-page-section half_left_layout">
+                <div class="main-half-layout half_right_layout"></div>
+
+                <!-- Left Content -->
+                <div class="main-half-layout-container half_right_layout">
+                    <div class="about-us-con">
+
+                        <p> {{ activity3_list.description|safe }} </p>
+                        <ul class="count-info row">
+                            <li class="col"><span class="counter">5000</span><span>+</span>
+                                <p>Customers</p>
+                            </li>
+                            <li class="col"><span class="counter">750</span><span>+</span>
+                                <p>Deploying</p>
+                            </li>
+                        </ul>
+                        <a href="#." class="btn">White Paper</a> <a href="#." class="btn btn-inverse">Find an
+                        Exchange</a></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Road Map -->
+        <section class="road-map padding-top-150 padding-bottom-50" id="roadmap">
+            <div class="container-fluid">
+
+                <p>{{ activity1_list.description|safe }}</p>
+                <!-- Road List -->
+                <ul class="edu-list margin-top-50">
+                    {% for activity in  activity2_list %}
+                        <li><span>{{ activity.date }}</span>
+                            <h5>{{ activity.title }} </h5>
+                            <p>{{ activity.description }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+
+
+        <!-- Join our community -->
+        <section class="community-sec padding-top-150 padding-bottom-150">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="sm-intro">
+                            <h2>Join our community</h2>
+                            <ul class="socials">
+                                <li><a href="#."><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#."><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#."><i class="fab fa-github"></i></a></li>
+                                <li><a href="#."><i class="fab fa-telegram"></i></a></li>
+                                <li><a href="#."><i class="fab fa-gitter"></i></a></li>
+                                <li><a href="#."><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="#."><i class="fab fa-linkedin"></i></a></li>
+                                <li><a href="#."><i class="fab fa-youtube"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="news-letter">
+                            <h2>Subscribe to our newsletter</h2>
+                            <form>
+                                <input type="email" placeholder="Enter your email address" required>
+                                <button type="submit">SEND</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="parthner">
+                <h6>Partnered with Innovative Globally</h6>
+                <ul>
+                    <li><a href="#."><img src="images/c-mg-1.png" alt=""></a></li>
+                    <li><a href="#."><img src="images/c-mg-2.png" alt=""></a></li>
+                    <li><a href="#."><img src="images/c-mg-3.png" alt=""></a></li>
+                    <li><a href="#."><img src="images/c-mg-1.png" alt=""></a></li>
+                    <li><a href="#."><img src="images/c-mg-2.png" alt=""></a></li>
+                    <li><a href="#."><img src="images/c-mg-3.png" alt=""></a></li>
+                    <li><a href="#."><img src="images/c-mg-1.png" alt=""></a></li>
+                    <li><a href="#."><img src="images/c-mg-2.png" alt=""></a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Us -->
+            <div class="contact">
+                <h6>Get In Touch With us</h6>
+                <!-- Success Msg -->
+                <div id="contact_message" class="success-msg"><i class="fa fa-paper-plane-o"></i>Thank You. Your Message
+                    has been Submitted
+                </div>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Send</button>
+                </form>
+                <!-- FORM -->
+                {#        <form role="form" id="contact_form" class="contact-form"  action="{% url 'home' %}" method="post" onSubmit="return false">#}
+                {#            {% csrf_token %}#}
+                {#         {{ form.as_p }}#}
+                {#          <ul class="row nolist-style">#}
+                {##}
+                {#            <li class="col-sm-4">#}
+                {#              <label>#}
+                {#                <input type="text" class="form-control" name="email" id="email" placeholder="Email">#}
+                {#              </label>#}
+                {#            </li>#}
+                {##}
+                {#            <li class="col-sm-12">#}
+                {#              <label>#}
+                {#                <textarea class="form-control" name="message" id="message" rows="5" placeholder="Message"></textarea>#}
+                {#              </label>#}
+                {#            </li>#}
+                {#            <li class="col-sm-12 text-left">#}
+                {#              <button type="submit"  class="btn btn-inverse" value="submit" id="btn_submit" onClick="proceed();">SUBMIT</button>#}
+                {#            </li>#}
+                {#          </ul>#}
+                {#        </form>#}
+            </div>
+        </div>
+
+        <!-- Rights -->
+        <div class="rights">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>© 2018 ICO Crypto BlockChain. All Rights Reserved. Webicode.com</p>
+                    </div>
+                    <div class="col-md-6 text-right"><a href="#.">Faqs </a> <a href="#.">Terms & Conditions </a> <a
+                            href="#.">Contact Us</a></div>
+                </div>
+            </div>
+
+
+    </footer>
+    <script>
+        // Function to update the countdown timer
+        function updateTimer() {
+            var daysElement = document.getElementsByClassName('days')[0];
+            var hoursElement = document.getElementsByClassName('hours')[0];
+            var minutesElement = document.getElementsByClassName('minutes')[0];
+            var secondsElement = document.getElementsByClassName('seconds')[0];
+
+            var days = parseInt(daysElement.textContent);
+            var hours = parseInt(hoursElement.textContent);
+            var minutes = parseInt(minutesElement.textContent);
+            var seconds = parseInt(secondsElement.textContent);
+
+            if (seconds > 0) {
+                seconds--;
+            } else {
+                if (minutes > 0) {
+                    minutes--;
+                    seconds = 59;
+                } else {
+                    if (hours > 0) {
+                        hours--;
+                        minutes = 59;
+                        seconds = 59;
+                    } else {
+                        if (days > 0) {
+                            days--;
+                            hours = 23;
+                            minutes = 59;
+                            seconds = 59;
+                        } else {
+                            // Timer has reached zero, you can handle this case as needed
+                        }
+                    }
+                }
+            }
+
+            // Update the timer display
+            daysElement.textContent = (days < 10 ? '0' : '') + days;
+            hoursElement.textContent = (hours < 10 ? '0' : '') + hours;
+            minutesElement.textContent = (minutes < 10 ? '0' : '') + minutes;
+            secondsElement.textContent = (seconds < 10 ? '0' : '') + seconds;
+        }
+
+        // Update the timer every second
+        setInterval(updateTimer, 1000);
+    </script>
+{% endblock %}
+  <!-- Why Choose Us -->
+
+        <section class="why-choose padding-top-150 padding-bottom-150" id="about">
+            <div class="container">
+
+                <!-- Why Choose Us  ROW-->
+                <div class="row">
+                    <div class="col-md-7 margin-top-60">
+                        <div class="heading margin-bottom-20">
+
+                            <p>{{ about_info.description|safe }}</p>
+                        </div>
+                        <div class="ultra-ser"><span><span class="name"> Webicode &nbsp; - &nbsp;</span> <span>Ceo/Founder Chain</span></span>
+                        </div>
+                        <a class="vid-btn margin-top-30 popup-youtube"
+                           href="https://www.youtube.com/watch?v=7e90gBu4pas"><i class="fas fa-play-circle"></i> Watch
+                            Video <br>
+                            <span>How it work</span></a></div>
+
+                                            <video width="320" height="240" controls>
+                                                <source src="{{ about_info.video_file.url }}" type="video/mp4">
+                                            </video>
+                </div>
+
+
+                <!-- Image -->
+                <div class="col-md-5 text-right"><img src="{{ about_info.image_file.url }}" alt="Why Choose Us Image">
+                </div>
+            </div>
+
+            <!-- Services ROW -->
+            <div class="row">
+                {% for transaction in transactions %}
+                    <!-- Services -->
+                    <div class="col-md-4">
+                        <div class="ib-icon"><i class="{{ transaction.logo }}"></i></div>
+                        <div class="ib-info">
+                            <h4 class="h6">{{ transaction.title }}</h4>
+                            <p>{{ transaction.description }}</p>
+                        </div>
+                    </div>
+
+                {% endfor %}
+
+            </div>
+    </div>
+    </section>

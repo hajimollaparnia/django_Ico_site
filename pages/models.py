@@ -1,12 +1,25 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from django.db import models
+from django.contrib.auth.models import User
+
+
+class HomeDescription(models.Model):
+    description = RichTextField()
+    link = models.URLField(null=True, blank=True)
+    pdf_file = models.FileField(upload_to='pdfs/', null=True, blank=True)
+
+    def __str__(self):
+        return self.description
 
 
 class About1(models.Model):
     description = RichTextField()
+    video_file = models.FileField(upload_to='videos/', null=True, blank=True)
+    image_file = models.ImageField(upload_to='images/', null=True, blank=True)
 
 
-class Transaction(models.Model):
+class About2(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     logo = models.CharField(max_length=50, blank=True)  # خالی بدون مقدار پیش‌فرض
@@ -15,41 +28,77 @@ class Transaction(models.Model):
         return self.title
 
 
-class Activity1(models.Model):
+class TokenDescription(models.Model):
+    A = models.CharField(max_length=10, default='0')
+    a = models.CharField(max_length=10, default='0')
+
+    B = models.TextField()
+    b = models.CharField(max_length=10, default='0')
+
+    C = models.CharField(max_length=10, default='0')
+    c = models.TextField(null=True, blank=True)
+
+    D = models.CharField(max_length=10, default='0')
+    d = models.TextField(null=True, blank=True)
+
+    description1 = RichTextField(null=True, blank=True)
+    description2 = RichTextField(null=True, blank=True)
+    description3 = RichTextField(null=True, blank=True)
+
+    days = models.CharField(max_length=10, default='0')
+    hours = models.CharField(max_length=10, default='0')
+    minutes = models.CharField(max_length=10, default='0')
+    seconds = models.CharField(max_length=10, default='0')
+
+    join_us_link = models.URLField(null=True, blank=True)
+    buy_link = models.URLField(null=True, blank=True)
+
+
+class Activity(models.Model):
+    description = RichTextField()
+
+    A = RichTextField(null=True, blank=True)
+    B = RichTextField(null=True, blank=True)
+    C = RichTextField(null=True, blank=True)
+    D = RichTextField(null=True, blank=True)
+
+    link = models.URLField(null=True, blank=True)
+    link_description = models.TextField(null=True, blank=True)
+
+    image_file = models.ImageField(upload_to='images/', null=True, blank=True)
+
+    def __str__(self):
+        return self.description
+
+
+class Link(models.Model):
+    link = models.URLField()
+
+    def __str__(self):
+        return self.link
+
+
+class Roadmap1(models.Model):
     description = RichTextField()
 
 
-class Activity2(models.Model):
+class Roadmap2(models.Model):
     date = models.DateField()
     title = models.CharField(max_length=100)
-    description = models.TextField()
+    description = RichTextField()
 
     def __str__(self):
         return f"{self.title} - {self.date}"
 
 
-class Activity3(models.Model):
-    description = RichTextField()
+class FooterDescription(models.Model):
+    description1 = RichTextField()
+    description2 = RichTextField()
 
 
-class Message(models.Model):
-
-    email = models.EmailField()
-    message = models.TextField()
-    created_at = models.DateTimeField(default='2024-01-01 00:00:00')
-
-    def __str__(self):
-        return self.email
-
-
-class AdminReply(models.Model):
-    user_message = models.ForeignKey(Message, related_name='replies', on_delete=models.CASCADE)
-    reply_message = models.TextField()
-    created_at = models.DateTimeField(default='2024-01-01 00:00:00')
-    sent_to_user = models.BooleanField(default=False)
-
-    def __str__(self):
-        return f"Reply to {self.user_message.email}"
+class FooterLinks(models.Model):
+    link = models.URLField(null=True, blank=True)
+    link_description = models.TextField(null=True, blank=True)
 
 
 class Email(models.Model):
@@ -62,3 +111,14 @@ class Email(models.Model):
     def __str__(self):
         return self.subject
 
+
+
+
+#
+# class Message(models.Model):
+#     email = models.EmailField()
+#     message = models.TextField()
+#     created_at = models.DateTimeField(default='2024-01-01 00:00:00')
+#
+#     def __str__(self):
+#         return self.email
