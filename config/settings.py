@@ -16,12 +16,11 @@ from django.contrib.messages import constants as messages
 from environs import Env
 import os
 from pathlib import Path
-
+import dj_database_url
 from pathlib import Path
 
 env = Env()
 env.read_env()
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("DJANGO_SECRET_KEY")
+SECRET_KEY = 'django-insecure-b764$#(&o4o((cvy!z^nsseq5@erq#e^0%5r5a(%c24*f^*sde'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -49,17 +48,13 @@ INSTALLED_APPS = [
 
     'crispy_forms',
     'crispy_bootstrap4',
-    'allauth',
-    'allauth.account',
+
     'ckeditor',
     'django.contrib.humanize',
     # 'notifications',
     # 'django_mail_admin',
 
-
-
     'pages',
-
 
 ]
 SITE_ID = 1
@@ -72,7 +67,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware',
+    # 'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -102,16 +97,32 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'db',
+        'USER': 'root',
+        'PASSWORD': 'iNv0v95NjTRC12M5iqxuYRWj',
+        'HOST': 'par76',
         'PORT': 5432
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
-# Password validation
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'postgres',
+#         'USER': 'postgres',
+#         'PASSWORD': 'postgres',
+#         'HOST': 'db',
+#         'PORT': 5432
+#         # 'ENGINE': 'django.db.backends.sqlite3',
+#         # 'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
+# DATABASES["default"] = dj_database_url.parse("postgres://postgres_tpqt_user:woQRXpXCcGV923STYUZHUSQ8pgEzpmlz@dpg"
+#                                              "-cmj17vun7f5s73a6ttmg-a.oregon-postgres.render.com/postgres_tpqt")
+# # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -132,10 +143,9 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTHENTICATION_BACKENDS = [
 
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
+    # 'allauth.account.auth_backends.AuthenticationBackend',
 
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
@@ -158,9 +168,15 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
 
 # media
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+# MEDIA_ROOT = "D:\\django_code\\Ico\\media\\"
+# PROJECT_ROOT = os.path.normpath(os.path.dirname(__file__))
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 PROJECT_ROOT = os.path.normpath(os.path.dirname(__file__))
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
@@ -182,26 +198,11 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 
-# EMAIL_HOST = 'your_email_host'
-# EMAIL_PORT = 465
-# EMAIL_USE_TLS = True  # یا False، به تنظیمات ایمیل سرویس شما بستگی دارد
-# EMAIL_HOST_USER = 'hajimollaparnia7676@gmail.com'
-# EMAIL_HOST_PASSWORD = 'your_email_password'
-# DEFAULT_FROM_EMAIL = 'hajimollaparnia7676@gmail.com'
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'hajimollaparnia7676@gmail.com'
-EMAIL_HOST_PASSWORD = '4parnia1474'
-EMAIL_USE_SSL = False
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 #
-# EMAIL_HOST = 'localhost'
-# EMAIL_PORT = 25
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
 # EMAIL_USE_TLS = True
 # EMAIL_HOST_USER = 'hajimollaparnia7676@gmail.com'
-# EMAIL_HOST_PASSWORD = 'parnia1474'
-# # EMAIL_USE_SSL = False
-
+# EMAIL_HOST_PASSWORD = '4parnia1474'
+# EMAIL_USE_SSL = False

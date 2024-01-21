@@ -1,0 +1,8 @@
+{
+  "disks": [
+    {
+      "name": "gfds",
+      "mountTo": "media"
+    }
+  ]
+}

@@ -1,24 +1,7 @@
 from django.views.generic import TemplateView
-from .models import About1
-from django.shortcuts import redirect
 from django.shortcuts import render
+from .models import About1
 from . import models
-
-
-class AboutUsPageView(TemplateView):
-    template_name = 'pages/aboutus.html'
-
-
-class RoadMapPageView(TemplateView):
-    template_name = 'pages/Roadmap.html'
-
-
-class ActivityPageView(TemplateView):
-    template_name = 'pages/activity.html'
-
-
-class TeamPageView(TemplateView):
-    template_name = 'pages/team.html'
 
 
 class HomePageView(TemplateView):

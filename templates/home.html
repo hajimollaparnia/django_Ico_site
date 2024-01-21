@@ -13,8 +13,12 @@
         <div class="position-center-center">
             <div class="container text-center">
                 <p>{{ home_description.description|safe }}</p>
-                <a href="{{ home_description.link|safe }}" class="btn">Join Us</a> <a
-                    href="{{ home_description.pdf_file.url }}" download class="btn btn-inverse">View White Paper</a>
+                {% if home_description.link %}
+                 <a href="{{ home_description.link }}" class="btn">Join Us</a>
+                {% endif %}
+               {% if home_description.pdf_file %}
+                <a href="{{ home_description.pdf_file.url }}" download class="btn btn-inverse">View White Paper</a>
+               {% endif %}
             </div>
         </div>
     </section>
@@ -144,8 +148,11 @@
     <!-- Development -->
     <section class="dev-activ text-center padding-top-150 padding-bottom-150" id="activity">
         <div class="main-page-section half_left_layout">
-            <div class="main-half-layout half_right_layout"><img src="{{ activity.image_file.url|safe }}"
-                                                                 alt="Why Choose Us Image"></div>
+            {% if activity.image_file.url %}
+            <div class="main-half-layout half_right_layout"><img width="100%" height="100%" src="{{ activity.image_file.url }}"
+                                                                 alt=" Image"></div>
+            {% endif %}
+{#            <img width="50%" height="100%"  src="{{ activity.image_file.url|safe }}" alt="Image">#}
 
 
             <!-- Left Content -->

@@ -1,5 +1,3 @@
-
-
 from .models import Email
 from django import forms
 
