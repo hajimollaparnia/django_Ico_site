@@ -106,20 +106,6 @@ DATABASES = {
     }
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'postgres',
-#         'USER': 'postgres',
-#         'PASSWORD': 'postgres',
-#         'HOST': 'db',
-#         'PORT': 5432
-#         # 'ENGINE': 'django.db.backends.sqlite3',
-#         # 'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-
 # DATABASES["default"] = dj_database_url.parse("postgres://postgres_tpqt_user:woQRXpXCcGV923STYUZHUSQ8pgEzpmlz@dpg"
 #                                              "-cmj17vun7f5s73a6ttmg-a.oregon-postgres.render.com/postgres_tpqt")
 # # Password validation
