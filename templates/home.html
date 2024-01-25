@@ -1,6 +1,7 @@
 {% extends '_base.html' %}
 {% load humanize %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 
 {% block content %}
@@ -14,11 +15,11 @@
             <div class="container text-center">
                 <p>{{ home_description.description|safe }}</p>
                 {% if home_description.link %}
-                 <a href="{{ home_description.link }}" class="btn">Join Us</a>
+                    <a href="{{ home_description.link }}" class="btn">Join Us</a>
                 {% endif %}
-               {% if home_description.pdf_file %}
-                <a href="{{ home_description.pdf_file.url }}" download class="btn btn-inverse">View White Paper</a>
-               {% endif %}
+                {% if home_description.pdf_file %}
+                    <a href="{{ home_description.pdf_file.url }}" download class="btn btn-inverse">View White Paper</a>
+                {% endif %}
             </div>
         </div>
     </section>
@@ -27,231 +28,228 @@
     <div id="content">
 
 
-    <!-- Why Choose Us -->
-    <section class="why-choose padding-top-150 padding-bottom-150" id="about">
-      <div class="container">
+        <!-- Why Choose Us -->
+        <section class="why-choose padding-top-150 padding-bottom-150" id="about">
+            <div class="container">
 
-        <!-- Why Choose Us  ROW-->
-        <div class="row">
-          <div class="col-md-7 margin-top-60">
+                <!-- Why Choose Us  ROW-->
+                <div class="row">
+                    <div class="col-md-7 margin-top-60">
 
-            <!-- Tittle -->
-            <div class="heading margin-bottom-20">
-            <p>{{ about_info.description|safe }}</p>
-            </div>
+                        <!-- Tittle -->
+                        <div class="heading margin-bottom-20">
+                            <p>{{ about_info.description|safe }}</p>
+                        </div>
 
-            <a class="vid-btn margin-top-30 popup-youtube"> <video width="50%" height="50%" controls>
-                                                <source src="{{ about_info.video_file.url }}" type="video/mp4">
-                                            </video>
-           </a> </div>
+                        <a class="vid-btn margin-top-30 popup-youtube">
+                            <video width="50%" height="50%" controls>
+                                <source src="{{ about_info.video_file.url }}" type="video/mp4">
+                            </video>
+                        </a></div>
 
-          <!-- Image -->
-          <div class="col-md-5 text-right"> <img src="{{ about_info.image_file.url }}" alt="Why Choose Us Image" > </div>
-        </div>
-
-        <!-- Services ROW -->
-        <div class="row">
-            {% for transaction in transactions %}
-
-              <!-- Services -->
-              <div class="col-md-4">
-                <div class="ib-icon"> <i class="{{ transaction.logo }}"></i> </div>
-                <div class="ib-info">
-                  <h4 class="h6">{{ transaction.title }}</h4>
-                  <p>{{ transaction.description }}</p>
+                    <!-- Image -->
+                    <div class="col-md-5 text-right"><img src="{{ about_info.image_file.url }}"
+                                                          alt="Why Choose Us Image"></div>
                 </div>
-              </div>
 
-            {% endfor %}
-        </div>
-      </div>
-    </section>
+                <!-- Services ROW -->
+                <div class="row">
+                    {% for transaction in transactions %}
 
-    <!-- Token Distribution -->
-    <section class="distri drk padding-top-150 padding-bottom-150 " id="token">
-        <div class="container">
-            <div class="row">
+                        <!-- Services -->
+                        <div class="col-md-4">
+                            <div class="ib-icon"><i class="{{ transaction.logo }}"></i></div>
+                            <div class="ib-info">
+                                <h4 class="h6">{{ transaction.title }}</h4>
+                                <p>{{ transaction.description }}</p>
+                            </div>
+                        </div>
 
-                <!-- Token  -->
-                <div class="col-lg-7">
-                    <p>{{ token_description.description1|safe }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
 
-                    <!-- Progress -->
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50"
-                             aria-valuemin="0" aria-valuemax="150">
-                            <span>{{ token_description.A|safe|intcomma }} <small>{{ token_description.a|safe }}</small></span>
+        <!-- Token Distribution -->
+        <section class="distri drk padding-top-150 padding-bottom-150 " id="token">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Token  -->
+                    <div class="col-lg-7">
+                        <p>{{ token_description.description1|safe }}</p>
+
+                        <!-- Progress -->
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50"
+                                 aria-valuemin="0" aria-valuemax="150">
+                                <span>{{ token_description.A|safe|intcomma }} <small>{{ token_description.a|safe }}</small></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h6> {{ token_description.B }}</h6>
+                                <span>{{ token_description.b|safe|intcomma }}</span></div>
+                            <div class="col">
+                                <h6>{{ token_description.C|safe|intcomma }}</h6>
+                                <span>{{ token_description.c|safe }}</span></div>
+                            <div class="col">
+                                <h6> {{ token_description.D|safe|intcomma }}</h6>
+                                <span>{{ token_description.d|safe }}</span></div>
+                        </div>
+
+                        <!-- CountdownEnd -->
+                        <div class="countdown">
+                            <p>{{ token_description.description2|safe }}</p>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <h6> {{ token_description.B }}</h6>
-                            <span>{{ token_description.b|safe }}</span></div>
-                        <div class="col">
-                            <h6>{{ token_description.C|safe }}</h6>
-                            <span>{{ token_description.c|safe }}</span></div>
-                        <div class="col">
-                            <h6> {{ token_description.D|safe }}</h6>
-                            <span>{{ token_description.d|safe }}</span></div>
-                    </div>
 
-                    <!-- CountdownEnd -->
-                    <div class="countdown">
-                        <p>{{ token_description.description2|safe }}</p>
+                    <!-- Total Distribution -->
+                    <div class="col-lg-5">
+                        {{ token_description.description3|safe }}
+                        <div class="countdown-all">
+
+                            <!-- Countdown -->
+                            <ul class="row">
+                                <!-- Days -->
+                                <li class="col-md-3">
+                                    <article><span class="days"></span>
+                                        <p class="days_ref">Day</p>
+                                    </article>
+                                </li>
+                                <!-- Hours -->
+                                <li class="col-md-3">
+                                    <article><span class="hours">{{ token_description.hours }}</span>
+                                        <p class="hours_ref">Hours</p>
+                                    </article>
+                                </li>
+                                <!-- Mintes -->
+                                <li class="col-md-3">
+                                    <article><span class="minutes">{{ token_description.minutes }}</span>
+                                        <p class="minutes_ref">Minutes</p>
+                                    </article>
+                                </li>
+                                <!-- Seconds -->
+                                <li class="col-md-3">
+                                    <article><span class="seconds">{{ token_description.seconds }}</span>
+                                        <p class="seconds_ref">Seconds</p>
+                                    </article>
+                                </li>
+                            </ul>
+                            <a href="{{ token_description.join_us_link }}" class="btn">Join Us</a> <a
+                                href="{{ token_description.buy_link }}" class="btn btn-inverse">Buy Now</a>
+
+                            <!-- Buy Option -->
+                            <div class="card-info"><i class="fab  fa-bitcoin"></i> <i class="fab  fa-cc-discover"></i>
+                                <i
+                                        class="fab  fa-cc-visa"></i> <i class="fab  fa-cc-mastercard"></i></div>
+                        </div>
+
                     </div>
                 </div>
+            </div>
 
-                <!-- Total Distribution -->
-                <div class="col-lg-5">
-                    {{ token_description.description3|safe }}
-                    <div class="countdown-all">
+        </section>
+        <!-- Development -->
+        <section class="dev-activ text-center padding-top-150 padding-bottom-150" id="activity">
+            <div class="main-page-section half_left_layout">
+                {% if activity.image_file.url %}
+                    <div class="main-half-layout half_right_layout"><img width="100%" height="100%"
+                                                                         src="{{ activity.image_file.url }}"
+                                                                         alt=" Image"></div>
+                {% endif %}
+                {#            <img width="50%" height="100%"  src="{{ activity.image_file.url|safe }}" alt="Image">#}
 
-                        <!-- Countdown -->
-                        <ul class="row">
-                            <!-- Days -->
-                            <li class="col-md-3">
-                                <article><span class="days">{{ token_description.days }}</span>
-                                    <p class="days_ref">Days</p>
-                                </article>
+
+                <!-- Left Content -->
+                <div class="main-half-layout-container half_right_layout">
+                    <div class="about-us-con">
+
+                        <p> {{ activity.description|safe }} </p>
+                        <ul class="count-info row">
+                            <li class="col"><span class="counter">{{ activity.A|safe }} </span><span>+</span>
+                                <p>{{ activity.B|safe }} </p>
                             </li>
-                            <!-- Hours -->
-                            <li class="col-md-3">
-                                <article><span class="hours">{{ token_description.hours }}</span>
-                                    <p class="hours_ref">Hours</p>
-                                </article>
-                            </li>
-                            <!-- Mintes -->
-                            <li class="col-md-3">
-                                <article><span class="minutes">{{ token_description.minutes }}</span>
-                                    <p class="minutes_ref">Minutes</p>
-                                </article>
-                            </li>
-                            <!-- Seconds -->
-                            <li class="col-md-3">
-                                <article><span class="seconds">{{ token_description.seconds }}</span>
-                                    <p class="seconds_ref">Seconds</p>
-                                </article>
+                            <li class="col"><span class="counter">{{ activity.C|safe }} </span><span>+</span>
+                                <p>{{ activity.D|safe }} </p>
                             </li>
                         </ul>
-                        <a href="{{ token_description.join_us_link }}" class="btn">Join Us</a> <a
-                            href="{{ token_description.buy_link }}" class="btn btn-inverse">Buy Now</a>
-
-                        <!-- Buy Option -->
-                        <div class="card-info"><i class="fab  fa-bitcoin"></i> <i class="fab  fa-cc-discover"></i> <i
-                                class="fab  fa-cc-visa"></i> <i class="fab  fa-cc-mastercard"></i></div>
-                    </div>
+                        <a href="{{ home_description.pdf_file.url }}" class="btn">White Paper</a> <a
+                            href="{{ activity.link }}" class="btn btn-inverse">{{ activity.link_description|safe }}
+                    </a></div>
                 </div>
             </div>
-        </div>
-
-    </section>
-    <!-- Development -->
-    <section class="dev-activ text-center padding-top-150 padding-bottom-150" id="activity">
-        <div class="main-page-section half_left_layout">
-            {% if activity.image_file.url %}
-            <div class="main-half-layout half_right_layout"><img width="100%" height="100%" src="{{ activity.image_file.url }}"
-                                                                 alt=" Image"></div>
-            {% endif %}
-{#            <img width="50%" height="100%"  src="{{ activity.image_file.url|safe }}" alt="Image">#}
+        </section>
 
 
-            <!-- Left Content -->
-            <div class="main-half-layout-container half_right_layout">
-                <div class="about-us-con">
+        <!-- Road Map -->
+        <section class="road-map padding-top-150 padding-bottom-50" id="roadmap">
+            <div class="container-fluid">
 
-                    <p> {{ activity.description|safe }} </p>
-                    <ul class="count-info row">
-                        <li class="col"><span class="counter">{{ activity.A|safe }} </span><span>+</span>
-                            <p>{{ activity.B|safe }} </p>
+                <p>{{ activity1_list.description|safe }}</p>
+                <!-- Road List -->
+                <ul class="edu-list margin-top-50">
+                    {% for activity in  activity2_list %}
+                        <li><span>{{ activity.date }}</span>
+                            <h5>{{ activity.title|safe }} </h5>
+                            <p>{{ activity.description|safe }}</p>
                         </li>
-                        <li class="col"><span class="counter">{{ activity.C|safe }} </span><span>+</span>
-                            <p>{{ activity.D|safe }} </p>
-                        </li>
-                    </ul>
-                    <a href="{{ home_description.pdf_file.url }}" class="btn">White Paper</a> <a
-                        href="{{ activity.link }}" class="btn btn-inverse">{{ activity.link_description|safe }}
-                </a></div>
+                    {% endfor %}
+                </ul>
             </div>
-        </div>
-    </section>
-
-
-    <!-- Road Map -->
-    <section class="road-map padding-top-150 padding-bottom-50" id="roadmap">
-        <div class="container-fluid">
-
-            <p>{{ activity1_list.description|safe }}</p>
-            <!-- Road List -->
-            <ul class="edu-list margin-top-50">
-                {% for activity in  activity2_list %}
-                    <li><span>{{ activity.date }}</span>
-                        <h5>{{ activity.title }} </h5>
-                        <p>{{ activity.description }}</p>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
-    </section>
-
+        </section>
 
 
     </div>
     <!-- Footer -->
     <footer id="contact">
         <div class="container">
-            <div class="parthner">
+            {#            <div class="parthner">#}
+            {#                #}
+            {#            </div>#}
+            <div>
                 <h6>{{ footer_description.description1|safe }}</h6>
-{#                <ul>#}
-{#                    <li><a href="#."><img src="images/c-mg-1.png" alt=""></a></li>#}
-{#                    <li><a href="#."><img src="images/c-mg-2.png" alt=""></a></li>#}
-{#                    <li><a href="#."><img src="images/c-mg-3.png" alt=""></a></li>#}
-{#                    <li><a href="#."><img src="images/c-mg-1.png" alt=""></a></li>#}
-{#                    <li><a href="#."><img src="images/c-mg-2.png" alt=""></a></li>#}
-{#                    <li><a href="#."><img src="images/c-mg-3.png" alt=""></a></li>#}
-{#                    <li><a href="#."><img src="images/c-mg-1.png" alt=""></a></li>#}
-{#                    <li><a href="#."><img src="images/c-mg-2.png" alt=""></a></li>#}
-{#                </ul>#}
             </div>
+
 
             <!-- Contact Us -->
             <div class="contact">
-                <h6>Get In Touch With us</h6>
-                <!-- Success Msg -->
-                <div id="contact_message" class="success-msg"><i class="fa fa-paper-plane-o"></i>Thank You. Your Message
-                    has been Submitted
-                </div>
+                <h6>{{ footer_description.description2|safe }}</h6>
 
+
+
+                 <div id="contact_message" class="success-msg"><i class="fa fa-paper-plane-o"></i>
+                            </div>
                 <!-- FORM -->
-                <form role="form" id="contact_form" class="contact-form" method="post" onSubmit="return false">
+                <form role="form" id="contact_form" class="contact-form" method="post" action="{% url 'home' %}">
+                    {% csrf_token %}
+
+
                     <ul class="row nolist-style">
                         <li class="col-sm-4">
                             <label>
-                                <input type="text" class="form-control" name="name" id="name" placeholder="Name">
-                            </label>
-                        </li>
-                        <li class="col-sm-4">
-                            <label>
                                 <input type="text" class="form-control" name="email" id="email" placeholder="Email">
-                            </label>
-                        </li>
-                        <li class="col-sm-4">
-                            <label>
-                                <input type="text" class="form-control" name="company" id="company" placeholder="Phone">
+                                {#                                {{ form.email }}#}
                             </label>
                         </li>
                         <li class="col-sm-12">
                             <label>
                                 <textarea class="form-control" name="message" id="message" rows="5"
-                                          placeholder="Message"></textarea>
+                                          placeholder="Message"
+                                ></textarea>
+                                {#                                {{ form.message }}#}
                             </label>
                         </li>
                         <li class="col-sm-12 text-left">
                             <button type="submit" class="btn btn-inverse" value="submit" id="btn_submit"
-                                    onClick="proceed();">SUBMIT
+                            >SUBMIT
                             </button>
                         </li>
                     </ul>
+{#
                 </form>
+
+
             </div>
         </div>
 
@@ -260,64 +258,93 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <p>{{ footer_description.description2|safe }}</p>
+                        <p>{{ footer_description.description3|safe }}</p>
+
                     </div>
+
+
                     <div class="col-md-6 text-right">
-                    {% for link in footer_links %}
-                        <a href="{{ link.link }}">{{ link.link_description }} </a>
-                    {% endfor %}
+
+{#                        {% for link in footer_links %}#}
+{#                            <a href="{{ link.profile_url }}"><i class="{{ link.icon_class }}"#}
+{#                                                                style="font-size: 24px;"></i> </a>#}
+{#                        {% endfor %}#}
+
                     </div>
+
+
                 </div>
+
             </div>
+
+
         </div>
+        {#    <p>{{ footer_description.description2|safe }}</p>#}
     </footer>
 
+<!-- اضافه کردن jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-    <script>
-        // Function to update the countdown timer
-        function updateTimer() {
-            var daysElement = document.getElementsByClassName('days')[0];
-            var hoursElement = document.getElementsByClassName('hours')[0];
-            var minutesElement = document.getElementsByClassName('minutes')[0];
-            var secondsElement = document.getElementsByClassName('seconds')[0];
+<script>
+    $(document).ready(function () {
+        $('form').submit(function (event) {
+            // اجتناب از ارسال فرم به طور پیش‌فرض
+            event.preventDefault();
 
-            var days = parseInt(daysElement.textContent);
-            var hours = parseInt(hoursElement.textContent);
-            var minutes = parseInt(minutesElement.textContent);
-            var seconds = parseInt(secondsElement.textContent);
-
-            if (seconds > 0) {
-                seconds--;
-            } else {
-                if (minutes > 0) {
-                    minutes--;
-                    seconds = 59;
-                } else {
-                    if (hours > 0) {
-                        hours--;
-                        minutes = 59;
-                        seconds = 59;
-                    } else {
-                        if (days > 0) {
-                            days--;
-                            hours = 23;
-                            minutes = 59;
-                            seconds = 59;
-                        } else {
-                            // Timer has reached zero, you can handle this case as needed
-                        }
-                    }
+            // ارسال فرم به صورت AJAX
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                success: function (data) {
+                    // نمایش پیام موفقیت امیز
+                    alert('Your message has been sent successfully.');
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    // خطا در درخواست
+                    console.error('Error:', textStatus, errorThrown);
+                },
+                complete: function () {
+                    // بازگشت به همان صفحه بعد از ارسال فرم
+                    window.location.reload();
                 }
-            }
+            });
+        });
+    });
+</script>
+<script>
+        function makeTimer() {
+            // استفاده از متغیرهایی که از تمپلیت به آنها مقدار داده‌اید
+            var daysElement = $(".days");
+            var hoursElement = $(".hours");
+            var minutesElement = $(".minutes");
+            var secondsElement = $(".seconds");
 
-            // Update the timer display
-            daysElement.textContent = (days < 10 ? '0' : '') + days;
-            hoursElement.textContent = (hours < 10 ? '0' : '') + hours;
-            minutesElement.textContent = (minutes < 10 ? '0' : '') + minutes;
-            secondsElement.textContent = (seconds < 10 ? '0' : '') + seconds;
+            var endTime = new Date({{ ob.date|date:"U" }} * 1000
+        )
+
+            endTime = (Date.parse(endTime) / 1000);
+
+            var now = new Date();
+            now = (Date.parse(now) / 1000);
+
+            var timeLeft = endTime - now;
+
+            var days = Math.floor(timeLeft / 86400);
+            var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
+            var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600)) / 60);
+            var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
+
+            // اعمال تغییرات به عناصر HTML
+            daysElement.html(days);
+            hoursElement.html(hours);
+            minutesElement.html(minutes);
+            secondsElement.html(seconds);
         }
 
-        // Update the timer every second
-        setInterval(updateTimer, 1000);
+        setInterval(function () {
+            makeTimer();
+        }, 1000);
     </script>
+
 {% endblock %}

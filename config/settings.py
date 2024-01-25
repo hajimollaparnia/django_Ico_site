@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
     'crispy_forms',
     'crispy_bootstrap4',
+    'events',
 
     'ckeditor',
     'django.contrib.humanize',
@@ -92,19 +93,32 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'postgres',
+#         'USER': 'root',
+#         'PASSWORD': 'iNv0v95NjTRC12M5iqxuYRWj',
+#         'HOST': 'par76',
+#         'PORT': 5432
+#         # 'ENGINE': 'django.db.backends.sqlite3',
+#         # 'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
-        'USER': 'root',
-        'PASSWORD': 'iNv0v95NjTRC12M5iqxuYRWj',
-        'HOST': 'par76',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'db',
         'PORT': 5432
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 # DATABASES["default"] = dj_database_url.parse("postgres://postgres_tpqt_user:woQRXpXCcGV923STYUZHUSQ8pgEzpmlz@dpg"
 #                                              "-cmj17vun7f5s73a6ttmg-a.oregon-postgres.render.com/postgres_tpqt")
@@ -167,9 +181,8 @@ PROJECT_ROOT = os.path.normpath(os.path.dirname(__file__))
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-# LOGIN_REDIRECT_URL = 'home'
-# LOGOUT_REDIRECT_URL = 'home'
-# AUTH_USER_MODEL = 'accounts.CustomUser'
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 # crispy forms settings
 
@@ -184,11 +197,13 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 
-#
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
-# EMAIL_HOST_USER = 'hajimollaparnia7676@gmail.com'
-# EMAIL_HOST_PASSWORD = '4parnia1474'
+DEFAULT_FROM_EMAIL = 'par@shab76.monster'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.c1.liara.email'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+# EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'sweet_johnson_6u62q4'
+EMAIL_HOST_PASSWORD = '6532a6f8-0d92-494b-8158-15527e22f207'
 # EMAIL_USE_SSL = False
+

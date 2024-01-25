@@ -1,17 +1,9 @@
-from .models import Email
 from django import forms
 
 
-class EmailForm(forms.ModelForm):
-    class Meta:
-        model = Email
-        fields = ['subject', 'message', 'from_email', 'to_email']
+class ContactForm(forms.Form):
 
-
-# class UserMessageForm(forms.ModelForm):
-#     class Meta:
-#         model = Message
-#         fields = ['email', 'message']
-
+    email = forms.EmailField()
+    message = forms.CharField(widget=forms.Textarea)
 
 

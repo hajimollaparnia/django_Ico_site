@@ -28,26 +28,21 @@ class About2(models.Model):
 
 
 class TokenDescription(models.Model):
-    A = models.CharField(max_length=10, default='0')
-    a = models.CharField(max_length=10, default='0')
+    A = models.CharField(max_length=30, default='0')
+    a = models.CharField(max_length=30, default='0')
 
     B = models.TextField()
-    b = models.CharField(max_length=10, default='0')
+    b = models.CharField(max_length=30, default='0')
 
-    C = models.CharField(max_length=10, default='0')
+    C = models.CharField(max_length=30, default='0')
     c = models.TextField(null=True, blank=True)
 
-    D = models.CharField(max_length=10, default='0')
+    D = models.CharField(max_length=30, default='0')
     d = models.TextField(null=True, blank=True)
 
     description1 = RichTextField(null=True, blank=True)
     description2 = RichTextField(null=True, blank=True)
     description3 = RichTextField(null=True, blank=True)
-
-    days = models.CharField(max_length=10, default='0')
-    hours = models.CharField(max_length=10, default='0')
-    minutes = models.CharField(max_length=10, default='0')
-    seconds = models.CharField(max_length=10, default='0')
 
     join_us_link = models.URLField(null=True, blank=True)
     buy_link = models.URLField(null=True, blank=True)
@@ -91,33 +86,20 @@ class Roadmap2(models.Model):
 
 
 class FooterDescription(models.Model):
-    description1 = RichTextField()
-    description2 = RichTextField()
+    description1 = RichTextField(null=True, blank=True)
+    description2 = RichTextField(null=True, blank=True)
+    description3 = RichTextField(null=True, blank=True)
 
 
 class FooterLinks(models.Model):
-    link = models.URLField(null=True, blank=True)
-    link_description = models.TextField(null=True, blank=True)
+
+    icon_class = models.CharField(max_length=50, null=True, blank=True)
+    profile_url = models.URLField(null=True, blank=True)
 
 
-class Email(models.Model):
-    subject = models.CharField(max_length=255)
-    message = models.TextField()
-    from_email = models.EmailField()
-    to_email = models.EmailField()
-    sent = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.subject
+class Timer(models.Model):
+    date = models.DateTimeField(auto_now_add=False, blank=True, null=True)
 
 
 
 
-#
-# class Message(models.Model):
-#     email = models.EmailField()
-#     message = models.TextField()
-#     created_at = models.DateTimeField(default='2024-01-01 00:00:00')
-#
-#     def __str__(self):
-#         return self.email
