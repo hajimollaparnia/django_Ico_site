@@ -3473,7 +3473,8 @@ fieldset:disabled .btn {
 	flex-wrap: wrap;
 	padding-left: 0;
 	margin-bottom: 0;
-	list-style: none
+	list-style: none;
+	/*flex-wrap: nowrap;*/
 }
 .nav-link {
 	display: block;
@@ -6452,7 +6453,7 @@ fieldset:disabled .btn {
 	text-align: center!important
 }
 .text-primary {
-	color: #0d6efd!important
+	color: black!important
 }
 .text-secondary {
 	color: #6c757d!important

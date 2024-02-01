@@ -1,6 +1,13 @@
 from django.contrib import admin
 from . import models
 
+#
+# class SiteVisitAdmin(admin.ModelAdmin):
+#     list_display = ('admin_only_count', )
+
+
+# admin.site.register(models.SiteVisit, SiteVisitAdmin)
+
 
 @admin.register(models.HomeDescription)
 class UserLinkAdmin(admin.ModelAdmin):
@@ -92,3 +99,6 @@ class TimerAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.Timer, TimerAdmin)
+# events/admin.py
+
+

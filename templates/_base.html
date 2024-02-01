@@ -33,6 +33,9 @@
     <script src='{% static "https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" %}'></script>
 <![endif]-->
 
+{#    <style>#}
+
+{#    </style>#}
 </head>
 <body>
 
@@ -48,20 +51,25 @@
 
   <!-- header -->
   <header class="sticky">
+
     <div class="container">
 
-      <!-- Logo -->
-      <div class="logo"> <a href="index.html"><img class="img-responsive" src="{% static 'images/logo.png'  %}" alt="" ></a> </div>
+       <!-- Logo -->
+      <div class="logo">
+        <a href="#" style="margin-left: 20px;"><img class="img-responsive" src="{% static 'images/33.png' %}" style=" width: 62px; height: 62px;" alt=""></a>
+      </div>
+{#      <div class="logo" > <a href="#"><img class="img-responsive" src="{% static 'images/33.png'  %}" style="width: 62px; height:62px;  " alt="" ></a> </div>#}
       <nav class="navbar ownmenu navbar-expand-lg">
+{#           <div class="logo"> <a href="#"><img class="img-responsive" src="{% static 'images/33.png'  %}" style="width: 55%; height: 55%; top: 20px; padding:0px; margin: 0px " alt="" ></a> </div>#}
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="nav">
-            <li class="scroll active"><a href="#hme">Home</a></li>
-            <li class="scroll"> <a href="#about">About </a> </li>
-            <li class="scroll"> <a href="#token">Token</a> </li>
-            <li class="scroll"> <a href="#activity">Activity</a> </li>
-            <li class="scroll"> <a href="#roadmap">Road Map</a> </li>
-            <li class="scroll"> <a href="#contact">Contact</a> </li>
+            <li class="scroll active"><a href="#hme" >Home</a></li>
+            <li class="scroll"> <a href="#about" >About </a> </li>
+{#            <li class="scroll"> <a href="#token">Token</a> </li>#}
+            <li class="scroll"> <a href="#activity" >Activity</a> </li>
+            <li class="scroll"> <a href="#roadmap" >Road Map</a> </li>
+            <li class="scroll"> <a href="#contact" >Contact</a> </li>
           </ul>
         </div>
       </nav>

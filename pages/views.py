@@ -9,6 +9,9 @@ from .models import About1
 from . import models
 
 
+# from .models import SiteVisit
+
+
 class HomePageView(TemplateView, FormView):
     template_name = 'home.html'
     form_class = ContactForm  # افزودن فرم به ویو
@@ -31,6 +34,10 @@ class HomePageView(TemplateView, FormView):
         context['footer_links'] = models.FooterLinks.objects.all()
 
         context['ob'] = models.Timer.objects.first()
+
+        # site_visit, created = SiteVisit.objects.get_or_create(pk=1)
+        # site_visit.admin_only_count += 1
+        # site_visit.save()
 
         return context
 

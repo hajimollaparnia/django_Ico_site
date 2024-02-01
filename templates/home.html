@@ -6,7 +6,29 @@
 
 {% block content %}
 
+    <style>
 
+        .info-box {
+
+            cursor: pointer;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f8f8f8;
+        {#box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);#} transition: background-color 0.3s ease;
+            box-shadow: inset 0 0 5px rgba(255, 0, 255, 0.3); /* Inset box shadow added */
+        }
+
+        .info-box:hover {
+            background-color: #e0e0e0;
+        }
+
+        p {
+            margin: 0;
+        {#font-weight:bolder;#} color: #333;
+        {#font-size: calc(100% + 0.0vw);#} word-break: break-word;
+        }
+    </style>
     <!-- HOME MAIN  -->
     <section class="simple-head" data-stellar-background-ratio="0.5" id="hme">
         <!-- Particles -->
@@ -29,7 +51,7 @@
 
 
         <!-- Why Choose Us -->
-        <section class="why-choose padding-top-150 padding-bottom-150" id="about">
+        <section class="why-choose padding-top-150 padding-bottom-150" id="about" style="background-color:#F5F5F5">
             <div class="container">
 
                 <!-- Why Choose Us  ROW-->
@@ -41,123 +63,49 @@
                             <p>{{ about_info.description|safe }}</p>
                         </div>
 
-                        <a class="vid-btn margin-top-30 popup-youtube">
-                            <video width="50%" height="50%" controls>
-                                <source src="{{ about_info.video_file.url }}" type="video/mp4">
-                            </video>
-                        </a></div>
+
+                        {#                        <a class="vid-btn margin-top-30 popup-youtube">#}
+                        {#                            <video width="50%" height="50%" controls>#}
+                        {#                                <source src="{{ about_info.video_file.url }}" type="video/mp4">#}
+                        {#                            </video>#}
+                        {#                        </a>#}
+                    </div>
 
                     <!-- Image -->
                     <div class="col-md-5 text-right"><img src="{{ about_info.image_file.url }}"
                                                           alt="Why Choose Us Image"></div>
                 </div>
 
+
                 <!-- Services ROW -->
-                <div class="row">
-                    {% for transaction in transactions %}
-
-                        <!-- Services -->
-                        <div class="col-md-4">
-                            <div class="ib-icon"><i class="{{ transaction.logo }}"></i></div>
-                            <div class="ib-info">
-                                <h4 class="h6">{{ transaction.title }}</h4>
-                                <p>{{ transaction.description }}</p>
-                            </div>
-                        </div>
-
-                    {% endfor %}
-                </div>
-            </div>
-        </section>
-
-        <!-- Token Distribution -->
-        <section class="distri drk padding-top-150 padding-bottom-150 " id="token">
-            <div class="container">
-                <div class="row">
-
-                    <!-- Token  -->
-                    <div class="col-lg-7">
-                        <p>{{ token_description.description1|safe }}</p>
-
-                        <!-- Progress -->
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50"
-                                 aria-valuemin="0" aria-valuemax="150">
-                                <span>{{ token_description.A|safe|intcomma }} <small>{{ token_description.a|safe }}</small></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <h6> {{ token_description.B }}</h6>
-                                <span>{{ token_description.b|safe|intcomma }}</span></div>
-                            <div class="col">
-                                <h6>{{ token_description.C|safe|intcomma }}</h6>
-                                <span>{{ token_description.c|safe }}</span></div>
-                            <div class="col">
-                                <h6> {{ token_description.D|safe|intcomma }}</h6>
-                                <span>{{ token_description.d|safe }}</span></div>
-                        </div>
-
-                        <!-- CountdownEnd -->
-                        <div class="countdown">
-                            <p>{{ token_description.description2|safe }}</p>
-                        </div>
+                <div class="row" style="margin-top: 80px;margin-bottom: 80px">
+                    <div style="background-color: #ffccff; padding: 20px; border-radius: 10px; text-align: center; max-width: 800px; margin: auto; box-sizing: border-box;">
+                        <h2 style="color: #000000; margin-bottom: 30px; font-weight: normal; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 2em;">
+                            TOKENOMICS
+                        </h2>
+                        <p style="font-size: 28px; color: #000000; margin: 10px 0; letter-spacing: 2px;">
+                            7,777,777,777 &nbsp;&nbsp;&nbsp; 7F
+                        </p>
+                        <p style="font-size: 20px; color: #000000; margin: 15px 0; font-weight: lighter;">
+                            No Allocations | No Taxes
+                        </p>
+                        <p style="font-size: 20px; color: #000000; margin: 15px 0; font-weight: lighter;">
+                            No Presale | No BS
+                        </p>
                     </div>
 
-                    <!-- Total Distribution -->
-                    <div class="col-lg-5">
-                        {{ token_description.description3|safe }}
-                        <div class="countdown-all">
 
-                            <!-- Countdown -->
-                            <ul class="row">
-                                <!-- Days -->
-                                <li class="col-md-3">
-                                    <article><span class="days"></span>
-                                        <p class="days_ref">Day</p>
-                                    </article>
-                                </li>
-                                <!-- Hours -->
-                                <li class="col-md-3">
-                                    <article><span class="hours">{{ token_description.hours }}</span>
-                                        <p class="hours_ref">Hours</p>
-                                    </article>
-                                </li>
-                                <!-- Mintes -->
-                                <li class="col-md-3">
-                                    <article><span class="minutes">{{ token_description.minutes }}</span>
-                                        <p class="minutes_ref">Minutes</p>
-                                    </article>
-                                </li>
-                                <!-- Seconds -->
-                                <li class="col-md-3">
-                                    <article><span class="seconds">{{ token_description.seconds }}</span>
-                                        <p class="seconds_ref">Seconds</p>
-                                    </article>
-                                </li>
-                            </ul>
-                            <a href="{{ token_description.join_us_link }}" class="btn">Join Us</a> <a
-                                href="{{ token_description.buy_link }}" class="btn btn-inverse">Buy Now</a>
-
-                            <!-- Buy Option -->
-                            <div class="card-info"><i class="fab  fa-bitcoin"></i> <i class="fab  fa-cc-discover"></i>
-                                <i
-                                        class="fab  fa-cc-visa"></i> <i class="fab  fa-cc-mastercard"></i></div>
-                        </div>
-
-                    </div>
                 </div>
-            </div>
 
+            </div>
         </section>
-        <!-- Development -->
         <section class="dev-activ text-center padding-top-150 padding-bottom-150" id="activity">
             <div class="main-page-section half_left_layout">
-                {% if activity.image_file.url %}
-                    <div class="main-half-layout half_right_layout"><img width="100%" height="100%"
-                                                                         src="{{ activity.image_file.url }}"
-                                                                         alt=" Image"></div>
-                {% endif %}
+                {#                {% if activity.image_file.url %}#}
+                <div class="main-half-layout half_right_layout"><img width="100%" height="100%"
+                                                                     src="{{ activity.image_file.url }}"
+                                                                     alt=" Image"></div>
+                {#                {% endif %}#}
                 {#            <img width="50%" height="100%"  src="{{ activity.image_file.url|safe }}" alt="Image">#}
 
 
@@ -170,13 +118,58 @@
                             <li class="col"><span class="counter">{{ activity.A|safe }} </span><span>+</span>
                                 <p>{{ activity.B|safe }} </p>
                             </li>
-                            <li class="col"><span class="counter">{{ activity.C|safe }} </span><span>+</span>
-                                <p>{{ activity.D|safe }} </p>
-                            </li>
+                            {#                            <li class="col"><span class="counter">{{ activity.C|safe }} </span><span>+</span>#}
+                            {#                                <p>{{ activity.D|safe }} </p>#}
+                            {#                            </li>#}
                         </ul>
-                        <a href="{{ home_description.pdf_file.url }}" class="btn">White Paper</a> <a
-                            href="{{ activity.link }}" class="btn btn-inverse">{{ activity.link_description|safe }}
-                    </a></div>
+                        <a href="{{ home_description.pdf_file.url }}" class="btn">White Paper</a>
+                        {#                        <a href="{{ activity.link }}" class="btn btn-inverse">{{ activity.link_description|safe }}</a>#}
+
+                        <p style=" margin-top: 25px; font-size: 15px;  ">7funds smart contract on polygon chain </p>
+                        <div style=" margin-top: 10px; font-size: 17px " class="info-box" onclick="copyToClipboard()">
+                            <!-- متن داخل کادر -->
+                            <p id="contractAddress">0x8809f892287c96763C9e34B9A7cfeaC816219ff9</p>
+
+                            <!-- لینک با لینک مورد نظر -->
+                        </div>
+
+
+                        {#                    <div>#}
+                        {##}
+                        {#                        <div id="logo-container"#}
+                        {#                             style="display: flex; align-items: center; justify-content: space-around; max-width: 100%;">#}
+                        {#                            <a href="#" style="margin-right: 5px; max-width: calc(50% - 5px);">#}
+                        {#                                <img class="logo" src="{% static 'images/pppp.png' %}"#}
+                        {#                                     style="width: 100%; max-width: 200px; height: auto; margin-top: 20px;"#}
+                        {#                                     alt="Your Logo 2">#}
+                        {#                            </a>#}
+                        {#                            <a href="#" style="margin-left: 5px; max-width: calc(50% - 5px);">#}
+                        {#                                <img class="logo" src="{% static 'images/o.png' %}"#}
+                        {#                                     style="width: 100%; max-width: 250px; height: auto; margin-top: 20px;"#}
+                        {#                                     alt="Your Logo 1">#}
+                        {#                            </a>#}
+                        {#                        </div>#}
+                        <div id="logo-container"
+                             style="display: flex; justify-content: space-around; align-items: center; max-width: 1200px; width: 100%;">
+                            <a href="#">
+                                <img class="logo" src="{% static 'images/pppp.png' %}"
+                                     style="width: 200px; max-width: 100%; height: auto; margin-top: 30px; margin-right: auto; margin-left: auto;"
+                                     alt="Your Logo 2">
+                            </a>
+                            <a href="#">
+                                <img class="logo" src="{% static 'images/o.png' %}"
+                                     style="width: 250px; max-width: 100%; height: auto; margin-top: 30px; margin-right: auto; margin-left: auto;"
+                                     alt="Your Logo 1">
+                            </a>
+                        </div>
+
+
+                        {#                        <img src="{% static 'images/pppp.jpg' %}" style="width: 62px; height:62px; padding-top: 0px; "#}
+                        {#                             alt="">#}
+                        {#                        <img src="{% static 'images/33.png'  %}">#}
+                        {#                    </div>#}
+
+                    </div>
                 </div>
             </div>
         </section>
@@ -202,149 +195,201 @@
 
     </div>
     <!-- Footer -->
-    <footer id="contact">
-        <div class="container">
-            {#            <div class="parthner">#}
-            {#                #}
-            {#            </div>#}
-            <div>
-                <h6>{{ footer_description.description1|safe }}</h6>
+    <footer id="contact" >
+
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-md-6">
+                    <h1 class="text-primary mb-4" style="color:deeppink;"><img class="img-fluid me-2"
+                                                                               src="img/icon-1.png" alt=""
+                                                                               style="width: 45px;">7Founds</h1>
+                    <span>Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit.</span>
+                </div>
+
+                <div class="col-md-6">
+                    <div>
+                        <h5 class="mb-4" style="font-size:40px;">Powered by <h5 class="mb-4" style="font-size: 52px;">
+                            Polygon<img src="{% static 'images/ph.png' %}"
+                                        style="width: 70px; /* تعیین عرض تصویر */height: auto;" alt="Your Logo"></h5>
+                        </h5>
+
+
+                    </div>
+                    {#                    <p>Clita erat ipsum et lorem et sit, sed stet lorem sit clita.</p>#}
+                    {#                    <div class="position-relative">#}
+                    {#                        <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">#}
+                    {#                        <button type="button" class="btn btn-primary py-2 px-3 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>#}
+                    {#                    </div>#}
+                </div>
+                <div class="col-lg-3 col-md-6 ">
+                    <h5 class="mb-4" style="color:#b88506;">Quick Links</h5>
+
+                    <div class="mb-2" style="white-space: nowrap;">
+                        <a class="btn btn-link" href="" style="background: rgba(255,255,255,0); color:black">Contact
+                            Us</a>
+                    </div>
+
+                    <div class="mb-2" style="white-space: nowrap;">
+                        <a class="btn btn-link" href="" style="background: rgba(255,255,255,0); color:black">Our
+                            Services</a>
+                    </div>
+
+                    <div class="mb-2" style="white-space: nowrap;">
+                        <a class="btn btn-link" href="" style="background: rgba(255,255,255,0); color:black">Terms &
+                            Condition</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 ">
+                    <h5 class="mb-4" style="color:#b88506;">Our Services</h5>
+                    <div class="mb-2" style="white-space: nowrap;">
+                        <a class="btn btn-link" href="" style="background: rgba(255,255,255,0); color:black">Currency
+                            Wallet</a>
+                    </div>
+                    <div class="mb-2" style="white-space: nowrap;">
+                        <a class="btn btn-link" href="" style="background: rgba(255,255,255,0); color:black">Currency
+                            Transaction</a>
+                    </div>
+                    <div class="mb-2" style="white-space: nowrap;">
+                        <a class="btn btn-link" href="" style="background: rgba(255,255,255,0); color:black">Token
+                            Sale</a>
+                    </div>
+
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-4" style="color:#b88506;">Get In Touch</h5>
+                    <div class="mb-2" style="white-space: nowrap;">
+                        <a href=""><p style="color:black;"><i
+                                class="fa fa-envelope me-3" style="color:black; margin-left: 45px"></i>cooperate@7funds.io
+                        </p></a>
+                    </div>
+                    <div class="mb-2" style="white-space: nowrap;">
+                        <a href=""><p style="color:black;"><i
+                                class="fa fa-envelope me-3" style="color:black; margin-left: 45px"></i>cooperate@7funds.io
+                        </p></a>
+                    </div>
+
+                </div>
+                <div class="col-lg-3 col-md-6 ">
+                    <h5 class="mb-4" style="color:#b88506;">Follow Us</h5>
+                    <div class="d-flex">
+                        <a class="btn btn-square rounded-circle me-1" href=""
+                           style="background: rgba(255,255,255,0); color:black;font-size: 30px; margin-right:1px;"><i
+                                class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square rounded-circle me-1" href=""
+                           style="background: rgba(255,255,255,0);color:black; font-size: 30px;  margin-right:1px;"><i
+                                class="fab fa-telegram"></i></a>
+
+                    </div>
+                </div>
             </div>
 
 
-            <!-- Contact Us -->
-            <div class="contact">
-                <h6>{{ footer_description.description2|safe }}</h6>
+    </footer>
 
 
-
-                 <div id="contact_message" class="success-msg"><i class="fa fa-paper-plane-o"></i>
-                            </div>
-                <!-- FORM -->
-                <form role="form" id="contact_form" class="contact-form" method="post" action="{% url 'home' %}">
-                    {% csrf_token %}
-
-
-                    <ul class="row nolist-style">
-                        <li class="col-sm-4">
-                            <label>
-                                <input type="text" class="form-control" name="email" id="email" placeholder="Email">
-                                {#                                {{ form.email }}#}
-                            </label>
-                        </li>
-                        <li class="col-sm-12">
-                            <label>
-                                <textarea class="form-control" name="message" id="message" rows="5"
-                                          placeholder="Message"
-                                ></textarea>
-                                {#                                {{ form.message }}#}
-                            </label>
-                        </li>
-                        <li class="col-sm-12 text-left">
-                            <button type="submit" class="btn btn-inverse" value="submit" id="btn_submit"
-                            >SUBMIT
-                            </button>
-                        </li>
-                    </ul>
-{#
-                </form>
-
-
-            </div>
-        </div>
-
-        <!-- Rights -->
-        <div class="rights">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <p>{{ footer_description.description3|safe }}</p>
-
-                    </div>
-
-
-                    <div class="col-md-6 text-right">
-
-{#                        {% for link in footer_links %}#}
-{#                            <a href="{{ link.profile_url }}"><i class="{{ link.icon_class }}"#}
-{#                                                                style="font-size: 24px;"></i> </a>#}
-{#                        {% endfor %}#}
-
-                    </div>
-
-
+    <div class="rights"
+         style="background-color:#B3B3B3; color: rebeccapurple; padding: 20px 0; position: relative;">
+        <div class="container" style="display: flex; justify-content: center;">
+            <div class="row">
+                <div class="col" style="font-size: 20px;font-family: 'Arial', sans-serif;">
+                    <p style="color: black">© 7Funds, All Right Reserved.</p>
                 </div>
 
             </div>
-
-
         </div>
-        {#    <p>{{ footer_description.description2|safe }}</p>#}
-    </footer>
+    </div>
 
-<!-- اضافه کردن jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-<script>
-    $(document).ready(function () {
-        $('form').submit(function (event) {
-            // اجتناب از ارسال فرم به طور پیش‌فرض
-            event.preventDefault();
 
-            // ارسال فرم به صورت AJAX
-            $.ajax({
-                type: 'POST',
-                url: $(this).attr('action'),
-                data: $(this).serialize(),
-                success: function (data) {
-                    // نمایش پیام موفقیت امیز
-                    alert('Your message has been sent successfully.');
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    // خطا در درخواست
-                    console.error('Error:', textStatus, errorThrown);
-                },
-                complete: function () {
-                    // بازگشت به همان صفحه بعد از ارسال فرم
-                    window.location.reload();
-                }
-            });
-        });
-    });
-</script>
-<script>
-        function makeTimer() {
-            // استفاده از متغیرهایی که از تمپلیت به آنها مقدار داده‌اید
-            var daysElement = $(".days");
-            var hoursElement = $(".hours");
-            var minutesElement = $(".minutes");
-            var secondsElement = $(".seconds");
+    <!-- اضافه کردن jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        function copyToClipboard() {
+            // Get the text content of the paragraph
+            var contractAddressText = document.getElementById('contractAddress').innerText;
 
-            var endTime = new Date({{ ob.date|date:"U" }} * 1000
-        )
+            // Create a temporary input element
+            var tempInput = document.createElement('input');
+            tempInput.value = contractAddressText;
 
-            endTime = (Date.parse(endTime) / 1000);
+            // Append the input element to the document
+            document.body.appendChild(tempInput);
 
-            var now = new Date();
-            now = (Date.parse(now) / 1000);
+            // Select the text inside the input element
+            tempInput.select();
 
-            var timeLeft = endTime - now;
+            // Execute the copy command
+            document.execCommand('copy');
 
-            var days = Math.floor(timeLeft / 86400);
-            var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
-            var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600)) / 60);
-            var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
+            // Remove the temporary input element
+            document.body.removeChild(tempInput);
 
-            // اعمال تغییرات به عناصر HTML
-            daysElement.html(days);
-            hoursElement.html(hours);
-            minutesElement.html(minutes);
-            secondsElement.html(seconds);
+            // You can add a notification or other feedback here if needed
+            alert('Address copied to clipboard: ' + contractAddressText);
         }
-
-        setInterval(function () {
-            makeTimer();
-        }, 1000);
     </script>
+    {##}
+    {#<script>#}
+    {#    $(document).ready(function () {#}
+    {#        $('form').submit(function (event) {#}
+    {#            // اجتناب از ارسال فرم به طور پیش‌فرض#}
+    {#            event.preventDefault();#}
+    {##}
+    {#            // ارسال فرم به صورت AJAX#}
+    {#            $.ajax({#}
+    {#                type: 'POST',#}
+    {#                url: $(this).attr('action'),#}
+    {#                data: $(this).serialize(),#}
+    {#                success: function (data) {#}
+    {#                    // نمایش پیام موفقیت امیز#}
+    {#                    alert('Your message has been sent successfully.');#}
+    {#                },#}
+    {#                error: function (xhr, textStatus, errorThrown) {#}
+    {#                    // خطا در درخواست#}
+    {#                    console.error('Error:', textStatus, errorThrown);#}
+    {#                },#}
+    {#                complete: function () {#}
+    {#                    // بازگشت به همان صفحه بعد از ارسال فرم#}
+    {#                    window.location.reload();#}
+    {#                }#}
+    {#            });#}
+    {#        });#}
+    {#    });#}
+    {#</script>#}
+    {#<script>#}
+    {#        function makeTimer() {#}
+    {#            // استفاده از متغیرهایی که از تمپلیت به آنها مقدار داده‌اید#}
+    {#            var daysElement = $(".days");#}
+    {#            var hoursElement = $(".hours");#}
+    {#            var minutesElement = $(".minutes");#}
+    {#            var secondsElement = $(".seconds");#}
+    {##}
+    {#            var endTime = new Date({{ ob.date|date:"U" }} * 1000#}
+    {#        )#}
+    {##}
+    {#            endTime = (Date.parse(endTime) / 1000);#}
+    {##}
+    {#            var now = new Date();#}
+    {#            now = (Date.parse(now) / 1000);#}
+    {##}
+    {#            var timeLeft = endTime - now;#}
+    {##}
+    {#            var days = Math.floor(timeLeft / 86400);#}
+    {#            var hours = Math.floor((timeLeft - (days * 86400)) / 3600);#}
+    {#            var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600)) / 60);#}
+    {#            var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));#}
+    {##}
+    {#            // اعمال تغییرات به عناصر HTML#}
+    {#            daysElement.html(days);#}
+    {#            hoursElement.html(hours);#}
+    {#            minutesElement.html(minutes);#}
+    {#            secondsElement.html(seconds);#}
+    {#        }#}
+    {##}
+    {#        setInterval(function () {#}
+    {#            makeTimer();#}
+    {#        }, 1000);#}
+    {#    </script>#}
 
 {% endblock %}

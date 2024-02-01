@@ -101,5 +101,6 @@ class Timer(models.Model):
     date = models.DateTimeField(auto_now_add=False, blank=True, null=True)
 
 
-
+class SiteVisit(models.Model):
+    admin_only_count = models.IntegerField(default=0)
 

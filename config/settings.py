@@ -48,10 +48,11 @@ INSTALLED_APPS = [
 
     'crispy_forms',
     'crispy_bootstrap4',
-    'events',
+    # 'events',
 
     'ckeditor',
     'django.contrib.humanize',
+    # 'analytical',
     # 'notifications',
     # 'django_mail_admin',
 
@@ -93,7 +94,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-#
+# #
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
