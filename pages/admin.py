@@ -75,30 +75,30 @@ class RoadmapAdmin(admin.ModelAdmin):
 
 admin.site.register(models.Roadmap2, RoadmapAdmin)
 
+#
+# class FooterDescriptionAdmin(admin.ModelAdmin):
+#     list_display = ('description1', 'description2', 'description3')
+#
+#     def has_add_permission(self, request):
+#         # فقط اجازه افزودن یک داده داشته باشید
+#         return models.FooterDescription.objects.count() == 0
+#
+#
+# admin.site.register(models.FooterDescription, FooterDescriptionAdmin)
 
-class FooterDescriptionAdmin(admin.ModelAdmin):
-    list_display = ('description1', 'description2', 'description3')
+#
+# class FooterLinkAdmin(admin.ModelAdmin):
+#     list_display = ('icon_class', 'profile_url')
+#
+#
+# admin.site.register(models.FooterLinks, FooterLinkAdmin)
 
-    def has_add_permission(self, request):
-        # فقط اجازه افزودن یک داده داشته باشید
-        return models.FooterDescription.objects.count() == 0
-
-
-admin.site.register(models.FooterDescription, FooterDescriptionAdmin)
-
-
-class FooterLinkAdmin(admin.ModelAdmin):
-    list_display = ('icon_class', 'profile_url')
-
-
-admin.site.register(models.FooterLinks, FooterLinkAdmin)
-
-
-class TimerAdmin(admin.ModelAdmin):
-    list_display = ('date', )
-
-
-admin.site.register(models.Timer, TimerAdmin)
-# events/admin.py
-
+#
+# class TimerAdmin(admin.ModelAdmin):
+#     list_display = ('date', )
+#
+#
+# admin.site.register(models.Timer, TimerAdmin)
+# # events/admin.py
+#
 

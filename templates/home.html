@@ -28,6 +28,18 @@
         {#font-weight:bolder;#} color: #333;
         {#font-size: calc(100% + 0.0vw);#} word-break: break-word;
         }
+
+        @media (min-width: 768px) {
+            #logo-container a {
+                text-align: center;
+                text-decoration: none;
+            }
+
+            #logo-container p {
+                font-size: 15px;
+                margin-top: 20px;
+            }
+        }
     </style>
     <!-- HOME MAIN  -->
     <section class="simple-head" data-stellar-background-ratio="0.5" id="hme">
@@ -125,7 +137,8 @@
                         <a href="{{ home_description.pdf_file.url }}" class="btn">White Paper</a>
                         {#                        <a href="{{ activity.link }}" class="btn btn-inverse">{{ activity.link_description|safe }}</a>#}
 
-                        <p style=" margin-top: 25px; font-size: 15px;  ">7funds smart contract on polygon chain </p>
+                        <p style=" margin-top: 25px; font-size: 25px;  margin-bottom: 15px ">7funds
+                            smart contract on polygon chain </p>
                         <div style=" margin-top: 10px; font-size: 17px " class="info-box" onclick="copyToClipboard()">
                             <!-- متن داخل کادر -->
                             <p id="contractAddress">0x8809f892287c96763C9e34B9A7cfeaC816219ff9</p>
@@ -133,35 +146,37 @@
                             <!-- لینک با لینک مورد نظر -->
                         </div>
 
-
-                        {#                    <div>#}
-                        {##}
                         {#                        <div id="logo-container"#}
-                        {#                             style="display: flex; align-items: center; justify-content: space-around; max-width: 100%;">#}
-                        {#                            <a href="#" style="margin-right: 5px; max-width: calc(50% - 5px);">#}
+                        {#                             style="display: flex; justify-content: space-around; align-items: center; max-width: 1200px; width: 100%;">#}
+                        {#                            <a href="#">#}
                         {#                                <img class="logo" src="{% static 'images/pppp.png' %}"#}
-                        {#                                     style="width: 100%; max-width: 200px; height: auto; margin-top: 20px;"#}
+                        {#                                     style="min-width:200px;width: 200px; max-width: 100%; height: auto; margin-top: 100px; margin-right: auto; margin-left: auto;"#}
+                        {#                                     alt="Your Logo 2">#}
+                        {#                                <p style="text-align: center; margin-top: 20px; font-size: 15px; white-space: nowrap">#}
+                        {#                                    Buy on Quickswap </p>#}
+                        {#                            </a>#}
+                        {#                            <a href="#">#}
+                        {#                                <img class="logo" src="{% static 'images/o.png' %}"#}
+                        {#                                     style="min-width: 250px; width: 250px; max-width: 100%; height: auto; margin-top: 100px; margin-right: auto; margin-left: auto;"#}
+                        {#                                     alt="Your Logo 1">#}
+                        {#                                <p style="text-align: center; margin-top: 10px;font-size: 15px; white-space: nowrap">Buy#}
+                        {#                                    on UniSwap</p>#}
+                        {#                            </a>#}
+                        {#                        </div>#}
+
+                        {#                        <div id="logo-container"#}
+                        {#                             style="display: flex; justify-content: space-around; align-items: center; max-width: 1200px; width: 100%;">#}
+                        {#                            <a href="#">#}
+                        {#                                <img class="logo" src="{% static 'images/pppp.png' %}"#}
+                        {#                                     style="width: 200px; max-width: 100%; height: auto; margin-top: 30px; margin-right: auto; margin-left: auto;"#}
                         {#                                     alt="Your Logo 2">#}
                         {#                            </a>#}
-                        {#                            <a href="#" style="margin-left: 5px; max-width: calc(50% - 5px);">#}
+                        {#                            <a href="#">#}
                         {#                                <img class="logo" src="{% static 'images/o.png' %}"#}
-                        {#                                     style="width: 100%; max-width: 250px; height: auto; margin-top: 20px;"#}
+                        {#                                     style="width: 250px; max-width: 100%; height: auto; margin-top: 30px; margin-right: auto; margin-left: auto;"#}
                         {#                                     alt="Your Logo 1">#}
                         {#                            </a>#}
                         {#                        </div>#}
-                        <div id="logo-container"
-                             style="display: flex; justify-content: space-around; align-items: center; max-width: 1200px; width: 100%;">
-                            <a href="#">
-                                <img class="logo" src="{% static 'images/pppp.png' %}"
-                                     style="width: 200px; max-width: 100%; height: auto; margin-top: 30px; margin-right: auto; margin-left: auto;"
-                                     alt="Your Logo 2">
-                            </a>
-                            <a href="#">
-                                <img class="logo" src="{% static 'images/o.png' %}"
-                                     style="width: 250px; max-width: 100%; height: auto; margin-top: 30px; margin-right: auto; margin-left: auto;"
-                                     alt="Your Logo 1">
-                            </a>
-                        </div>
 
 
                         {#                        <img src="{% static 'images/pppp.jpg' %}" style="width: 62px; height:62px; padding-top: 0px; "#}
@@ -170,6 +185,32 @@
                         {#                    </div>#}
 
                     </div>
+                    <div id="logo-container"
+                         style=" display: flex; justify-content: space-around; align-items: center; max-width: 1200px; width: 100%;">
+                        <a href="your_quickswap_link"
+                           style="text-decoration: none; text-align: center; display: flex; flex-direction: column; align-items: center;">
+                            <img class="logo" src="{% static 'images/pppp.png' %}"
+                                 style=" width: 200px; max-width: 100%; height: auto; margin-top: 50px;"
+                                 alt="Your Logo 2">
+                            <p style="margin-top: 20px; font-size: 17px; white-space: nowrap;">Quickswap </p>
+                            <button style="padding: 10px; background-color: rgb(139,0,139);  rgb(27 25 27); color: white; border: none; border-radius: 5px; margin-top: 10px;">
+                                Buy Now
+                            </button>
+                        </a>
+
+                        <a href="your_uniswap_link"
+                           style="text-decoration: none; text-align: center; display: flex; flex-direction: column; align-items: center; ">
+                            <img class="logo" src="{% static 'images/d.png' %}"
+                                 style=" width: 250px; max-width: 100%; height: auto; margin-top: 50px; "
+                                 alt="Your Logo 1">
+                            <p style="margin-top: 10px; font-size: 17px; white-space: nowrap; "> UniSwap</p>
+                            <button style="padding: 10px; background-color: rgb(139,0,139); color: white; border: none; border-radius: 5px; margin-top: 10px;">
+                                Buy Now
+                            </button>
+                        </a>
+                    </div>
+
+
                 </div>
             </div>
         </section>
@@ -182,12 +223,38 @@
                 <p>{{ activity1_list.description|safe }}</p>
                 <!-- Road List -->
                 <ul class="edu-list margin-top-50">
-                    {% for activity in  activity2_list %}
-                        <li><span>{{ activity.date }}</span>
-                            <h5>{{ activity.title|safe }} </h5>
-                            <p>{{ activity.description|safe }}</p>
+                      <li>
+                         <span>Phase 1</span>
+                            <p>10,000 holder</p>
+                            <p>CEX Listing</p>
+{#                           <p>{{ activity.description|safe }}</p>#}
                         </li>
-                    {% endfor %}
+                      <li>
+                         <span>Phase 2</span>
+                            <p>25,000 holder</p>
+                            <p>Upgrade to multi chain token</p>
+{#                           <p>{{ activity.description|safe }}</p>#}
+                        </li>
+                      <li>
+                         <span>Phase 3</span>
+                            <p>75,000 holder</p>
+                            <p>Activate cryptocurrency and commodity fund</p>
+{#                           <p>{{ activity.description|safe }}</p>#}
+                        </li>
+                      <li>
+                         <span>Phase 4</span>
+                            <p>150,000 holder</p>
+                            <p>Activate all funds</p>
+{#                           <p>{{ activity.description|safe }}</p>#}
+                        </li>
+{#                    {% for activity in  activity2_list %}#}
+{#                        <li>#}
+{#                         <span>{{ activity.date }}</span>#}
+{#                            <h5>{{ activity.title|safe }}</h5>#}
+{#                            <p>{{ activity.description|safe }}</p>#}
+{#                           <p>{{ activity.description|safe }}</p>#}
+{#                        </li>#}
+{#                    {% endfor %}#}
                 </ul>
             </div>
         </section>
@@ -195,14 +262,14 @@
 
     </div>
     <!-- Footer -->
-    <footer id="contact" >
+    <footer id="contact">
 
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-md-6">
                     <h1 class="text-primary mb-4" style="color:deeppink;"><img class="img-fluid me-2"
                                                                                src="img/icon-1.png" alt=""
-                                                                               style="width: 45px;">7Founds</h1>
+                                                                               style="width: 45px;">7Funds</h1>
                     <span>Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit.</span>
                 </div>
 
@@ -289,11 +356,11 @@
 
 
     <div class="rights"
-         style="background-color:#B3B3B3; color: rebeccapurple; padding: 20px 0; position: relative;">
+         style="background-color:#f0f0f0; color: rebeccapurple; padding: 20px 0; position: relative; box-shadow: inset 0 0 10px rgba(0, 0,0, 0.3);">
         <div class="container" style="display: flex; justify-content: center;">
             <div class="row">
                 <div class="col" style="font-size: 20px;font-family: 'Arial', sans-serif;">
-                    <p style="color: black">© 7Funds, All Right Reserved.</p>
+                    <p style="color: #b88506">© 7Funds, All Right Reserved.</p>
                 </div>
 
             </div>
