@@ -47,13 +47,13 @@
         <div id="particles-js"></div>
         <div class="position-center-center">
             <div class="container text-center">
-                <p>{{ home_description.description|safe }}</p>
-                {% if home_description.link %}
-                    <a href="{{ home_description.link }}" class="btn">Join Us</a>
-                {% endif %}
-                {% if home_description.pdf_file %}
-                    <a href="{{ home_description.pdf_file.url }}" download class="btn btn-inverse">View White Paper</a>
-                {% endif %}
+                <h1>Welcome to the world of attractive, funny and easy investments.</h1> <p> 7Funds is the first project that was established with the idea of ​​investing in stocks and reliable assets, to provide a backed meme coin. Creativity and up-to-date knowledge and efforts to be present and continuously active in various financial fields bring an innovative project.</p>
+
+                <a href="{{ home_description.link }}" class="btn">Join Us</a>
+
+
+                <a href="{% static 'images/7Funds.io2.pdf' %}" download class="btn btn-inverse">View White Paper</a>
+
             </div>
         </div>
     </section>
@@ -72,7 +72,12 @@
 
                         <!-- Tittle -->
                         <div class="heading margin-bottom-20">
-                            <p>{{ about_info.description|safe }}</p>
+                            <p>It seems great to find a way to make our investments safe, low risk and profitable.
+                                Congratulations! We have found this strategy and we want to share it with the crypto community, Hopping that we all benefited from it.</p>
+
+                            <p>At first, the funds and capital of the project will be spent on buying safe and low-risk stocks and assets, and this will assures the 7F community and investors that project funds are safe and protected.</p>
+                       
+<p>In the next stage, due to fixed number of tokens and the timed release of the token along with the appropriate liquidity, the anti-inflation property of 7F will be another strong point and provide a healthy market.</p>
                         </div>
 
 
@@ -84,7 +89,7 @@
                     </div>
 
                     <!-- Image -->
-                    <div class="col-md-5 text-right"><img src="{{ about_info.image_file.url }}"
+                    <div class="col-md-5 text-right"><img src="{% static 'images/parimah.png' %}"
                                                           alt="Why Choose Us Image"></div>
                 </div>
 
@@ -96,7 +101,7 @@
                             TOKENOMICS
                         </h2>
                         <p style="font-size: 28px; color: #000000; margin: 10px 0; letter-spacing: 2px;">
-                            7,777,777,777 &nbsp;&nbsp;&nbsp; 7F
+                            77,777,777,777,777 &nbsp;&nbsp;&nbsp; 7F
                         </p>
                         <p style="font-size: 20px; color: #000000; margin: 15px 0; font-weight: lighter;">
                             No Allocations | No Taxes
@@ -134,14 +139,14 @@
                             {#                                <p>{{ activity.D|safe }} </p>#}
                             {#                            </li>#}
                         </ul>
-                        <a href="{{ home_description.pdf_file.url }}" class="btn">White Paper</a>
+                        <a href="{% static 'images/7Funds.io2.pdf' %}" class="btn">White Paper</a>
                         {#                        <a href="{{ activity.link }}" class="btn btn-inverse">{{ activity.link_description|safe }}</a>#}
 
                         <p style=" margin-top: 25px; font-size: 25px;  margin-bottom: 15px ">7funds
                             smart contract on polygon chain </p>
                         <div style=" margin-top: 10px; font-size: 17px " class="info-box" onclick="copyToClipboard()">
                             <!-- متن داخل کادر -->
-                            <p id="contractAddress">0x8809f892287c96763C9e34B9A7cfeaC816219ff9</p>
+                            <p id="contractAddress">0xaAD23E8A930E508313d32F6836025a0fe589E67a</p>
 
                             <!-- لینک با لینک مورد نظر -->
                         </div>
@@ -282,12 +287,12 @@
 
 
                     </div>
-                    {#                    <p>Clita erat ipsum et lorem et sit, sed stet lorem sit clita.</p>#}
-                    {#                    <div class="position-relative">#}
-                    {#                        <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">#}
-                    {#                        <button type="button" class="btn btn-primary py-2 px-3 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>#}
-                    {#                    </div>#}
-                </div>
+{#                                        <p>Clita erat ipsum et lorem et sit, sed stet lorem sit clita.</p>#}
+{#                                        <div class="position-relative">#}
+{#                                            <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">#}
+{#                                            <button type="button" class="btn btn-primary py-2 px-3 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>#}
+{#                                        </div>#}
+{#                </div>#}
                 <div class="col-lg-3 col-md-6 ">
                     <h5 class="mb-4" style="color:#b88506;">Quick Links</h5>
 

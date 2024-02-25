@@ -29,13 +29,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-b764$#(&o4o((cvy!z^nsseq5@erq#e^0%5r5a(%c24*f^*sde'
-SECRET_KEY = env("DJANGO_SECRET_KEY")
+SECRET_KEY = 'django-insecure-b764$#(&o4o((cvy!z^nsseq5@erq#e^0%5r5a(%c24*f^*sde'
+# SECRET_KEY = env("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['136.243.145.149', 'www.7funds.io', '7funds.io']
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['136.243.145.149', 'www.7funds.io', '7funds.io']
 
 # Application definition
 
@@ -70,6 +70,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     # 'allauth.account.middleware.AccountMiddleware',
 ]
 
@@ -96,13 +97,25 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 # #
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'postgres',
+#         'USER': 'root',
+#         'PASSWORD': 'iNv0v95NjTRC12M5iqxuYRWj',
+#         'HOST': 'par76',
+#         'PORT': 5432
+#         # 'ENGINE': 'django.db.backends.sqlite3',
+#         # 'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
-        'USER': 'root',
-        'PASSWORD': 'iNv0v95NjTRC12M5iqxuYRWj',
-        'HOST': 'par76',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'db',
         'PORT': 5432
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
@@ -110,12 +123,15 @@ DATABASES = {
 }
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'postgres',
-#         'USER': 'postgres',
-#         'PASSWORD': 'postgres',
-#         'HOST': 'db',
-#         'PORT': 5432
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'fundsio_fu',
+#         'USER': 'fundsio_fu',
+#         'PASSWORD': 'parnia1474',
+#         'HOST': 'localhost',
+#         # 'PORT': '3306',
+#         "OPTIONS": {
+#             "init_command": "SET sql_model='STRICT_TRANS_TABLES'",
+#         }
 #         # 'ENGINE': 'django.db.backends.sqlite3',
 #         # 'NAME': BASE_DIR / 'db.sqlite3',
 #     }
@@ -166,6 +182,7 @@ USE_TZ = True
 # STATIC_URL = 'static/'
 
 STATIC_URL = '/static/'
+# STATIC_ROOT = Path(BASE_DIR, "staticfiles")
 
 STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
 
